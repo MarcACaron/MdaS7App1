@@ -111,4 +111,8 @@ public class CustomArrow extends Shape implements Serializable{
 		this.lHead.setEndX(Math.cos(-45)*(this.startX-this.endX)*length/15+this.endX);
 		this.lHead.setEndY(Math.sin(-45)*(this.startY-endY)*length/15+endY);
 	}
+	
+	public Shape getArrow() {
+		return Shape.union(Shape.union(rHead, lHead), bodyLine);
+	}
 }
