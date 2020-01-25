@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
-public class customRectangle extends Rectangle implements customSerializable, Drawable {
+public class CustomRectangle extends Rectangle implements customSerializable, Drawable {
 
 	private static final long serialVersionUID = -5631325064753800206L;
 

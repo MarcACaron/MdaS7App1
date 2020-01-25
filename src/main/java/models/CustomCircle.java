@@ -10,7 +10,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
-public class customCircle extends Circle implements customSerializable, Drawable{
+public class CustomCircle extends Circle implements customSerializable, Drawable{
 
 	private static final long serialVersionUID = 2672929896832129863L;
 
