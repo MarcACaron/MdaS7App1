@@ -3,9 +3,9 @@ package testControllers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import controllers.FileGenerator;
-import controllers.ShapeStorage;
-import controllers.customCircle;
+import models.FileGenerator;
+import models.ShapeStorage;
+import models.customCircle;
 
 public class TestFileGenerator {
 	@Test
