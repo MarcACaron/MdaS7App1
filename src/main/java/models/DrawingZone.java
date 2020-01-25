@@ -39,6 +39,8 @@ public class DrawingZone {
     public void setCanvas(int canvasNumber, Canvas inputCanvas) {this.canvases[canvasNumber] = inputCanvas;}
     public Canvas getCanvas(int canvasNumber) {return this.canvases[canvasNumber];}
     
+    public Canvas[] getCanvases() {return canvases;}
+    
     public void clearCanvas(int canvasNumber) {
     	canvases[canvasNumber].getGraphicsContext2D().clearRect(size[0], size[1], canvases[canvasNumber].getWidth(), canvases[canvasNumber].getHeight());
     }
