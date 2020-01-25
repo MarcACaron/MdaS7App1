@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
+import ddraw4US.Drawable;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.util.Pair;
 
-public class CustomRectangle extends Rectangle implements customSerializable {
+public class customRectangle extends Rectangle implements customSerializable, Drawable {
 
 	private static final long serialVersionUID = -5631325064753800206L;
 
@@ -48,6 +52,20 @@ public class CustomRectangle extends Rectangle implements customSerializable {
 		oos.writeObject(this.getHeight());
 		
 		shapeWrite(oos, this);
+	}
+	
+	public Shape draw(Pair<Double, Double> startPositionXY, Pair<Double, Double> finalPositionXY) {
+		
+		double startX = startPositionXY.getKey();
+		double startY = startPositionXY.getValue();
+		
+		double finalX = finalPositionXY.getKey();
+		double finalY = finalPositionXY.getValue();
+		
+		double width = Math.max(finalX, startX) - Math.min(finalX, startX);
+		double height = Math.max(finalY, startY) - Math.min(finalY, startY);
+		
+		return new CustomRectangle(startX, startY, width, height);
 	}
 
 }

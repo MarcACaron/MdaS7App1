@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
+import ddraw4US.Drawable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
+import javafx.util.Pair;
 
-public class CustomCircle extends Circle implements customSerializable{
+public class customCircle extends Circle implements customSerializable, Drawable{
 
 	private static final long serialVersionUID = 2672929896832129863L;
 
@@ -51,5 +54,21 @@ public class CustomCircle extends Circle implements customSerializable{
 		
 		//Structure commune
 		shapeWrite(oos,this);
+	}
+	
+	public Shape draw(Pair<Double, Double> startPositionXY, Pair<Double, Double> finalPositionXY) {
+		
+		double startX = startPositionXY.getKey();
+		double startY = startPositionXY.getValue();
+		
+		double finalX = finalPositionXY.getKey();
+		double finalY = finalPositionXY.getValue();
+        
+        double x = startX - finalX;
+        double y = startY - finalY;
+        
+        double radius = Math.sqrt(x*x + y*y);
+		
+		return new CustomCircle(startX, startY, radius);
 	}
 }
