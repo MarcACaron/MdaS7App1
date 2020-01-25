@@ -7,14 +7,17 @@ import java.io.Serializable;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
-import models.customCircle;
+import models.CustomCircle;
 
 public interface customSerializable extends Serializable {
 	
 		default public void shapeWrite(final ObjectOutputStream oos, Shape sh) {
 			//Structure commune
 			try {
-				oos.writeObject(sh.getFill().toString());
+				if(sh.getFill()!=null)
+					oos.writeObject(sh.getFill().toString());
+				else
+					oos.writeObject("null");
 				if(sh.getStroke()!=null)
 					oos.writeObject(sh.getStroke().toString());//Couleur des traits
 				else
@@ -33,11 +36,13 @@ public interface customSerializable extends Serializable {
 		
 		default public void shapeRead(final ObjectInputStream ois, Shape sh) {
 			try {
-				sh.setFill( Color.valueOf((String) ois.readObject()));
+				String fill = (String) ois.readObject();
+				if(!fill.contentEquals("null")) {
+					sh.setFill( Color.valueOf(fill));
+				}
 				String stroke = (String) ois.readObject();
 				if(!stroke.contentEquals("null")) {
 					sh.setStroke( Color.valueOf(stroke));
-					System.out.println("Y'a une couleur de trait");
 				}
 				int dashArraySize = (int)ois.readObject();
 				for(int i=0; i<dashArraySize; i++) {
