@@ -5,11 +5,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import ddraw4US.customSerializable;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-public class customRectangle extends Rectangle implements Serializable {
+public class customRectangle extends Rectangle implements customSerializable {
 
 	public customRectangle() {
 		// TODO Auto-generated constructor stub
@@ -37,17 +38,8 @@ public class customRectangle extends Rectangle implements Serializable {
 		this.setHeight((double) ois.readObject());
 		
 		//Structure commune
-		this.setFill( Color.valueOf((String) ois.readObject()));
-		String stroke = (String) ois.readObject();
-		if(!stroke.contentEquals("null")) {
-			this.setStroke( Color.valueOf(stroke));
-			System.out.println("Y'a une couleur de trait");
-		}
-		int dashArraySize = (int)ois.readObject();
-		for(int i=0; i<dashArraySize; i++) {
-			this.getStrokeDashArray().add((double) ois.readObject());
-		}
-		this.setStrokeWidth((double) ois.readObject());
+		//Structure commune
+		shapeRead(ois, this);
 	}
 
 	private void writeObject(final ObjectOutputStream oos) throws IOException {
@@ -56,17 +48,7 @@ public class customRectangle extends Rectangle implements Serializable {
 		oos.writeObject(this.getWidth());
 		oos.writeObject(this.getHeight());
 		
-		//Structure commune
-		oos.writeObject(this.getFill().toString());
-		if(this.getStroke()!=null)
-			oos.writeObject(this.getStroke().toString());//Couleur des traits
-		else
-			oos.writeObject("null");
-		oos.writeObject(this.getStrokeDashArray().size());
-		for(int i=0; i<this.getStrokeDashArray().size(); i++) {
-			oos.writeObject(this.getStrokeDashArray().get(i));
-		}
-		oos.writeObject(this.getStrokeWidth());
+		shapeWrite(oos, this);
 	}
 
 }

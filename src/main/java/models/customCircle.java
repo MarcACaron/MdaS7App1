@@ -5,11 +5,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import ddraw4US.customSerializable;
 import javafx.beans.property.DoubleProperty;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class customCircle extends Circle implements Serializable{
+public class customCircle extends Circle implements customSerializable{
+
+	private static final long serialVersionUID = 2672929896832129863L;
 
 	public customCircle() {
 		// TODO Auto-generated constructor stub
@@ -38,11 +42,18 @@ public class customCircle extends Circle implements Serializable{
 		this.setRadius((double) ois.readObject());
 		this.setCenterX((double) ois.readObject());
 		this.setCenterY((double) ois.readObject());
+		
+		//Structure commune
+		shapeRead(ois, this);
+		
 	}
 
 	private void writeObject(final ObjectOutputStream oos) throws IOException {
 		oos.writeObject(this.getRadius());
 		oos.writeObject(this.getCenterX());
 		oos.writeObject(this.getCenterY());
+		
+		//Structure commune
+		shapeWrite(oos,this);
 	}
 }
