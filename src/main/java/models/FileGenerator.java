@@ -16,6 +16,7 @@ import java.util.ListIterator;
 import javafx.scene.shape.Shape;
 
 public class FileGenerator {
+	
 	public void saveDraw(List<Shape> shapeCollection, String fileName) {
 	    ObjectOutputStream oos;
 	    try {
@@ -27,9 +28,7 @@ public class FileGenerator {
 	      oos.writeObject(shapeCollection.size());
 	      ListIterator<Shape> it = shapeCollection.listIterator();
 	      while(it.hasNext()) {
-	    	  Shape sh = it.next();
-	    	  System.out.println(sh);
-	    	  oos.writeObject(sh);
+	    	  oos.writeObject(it.next());
 	    	  
 	      }
 	      oos.close();
@@ -53,11 +52,8 @@ public class FileGenerator {
 	            
 	      try {
 	    	shapeNumber=(int)ois.readObject();
-	    	System.out.println("************");
 			for(int i=0; i<shapeNumber; i++) {
-				Shape sh = (Shape)ois.readObject();
-				shapeCollection.add(sh);
-				System.out.println(sh.toString());
+				shapeCollection.add((Shape)ois.readObject());
 			}
 	      } catch (ClassNotFoundException e) {
 	        e.printStackTrace();
