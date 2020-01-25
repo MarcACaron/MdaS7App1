@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
 import models.CustomLine;
 import models.FileGenerator;
 import models.ShapeStorage;
+import models.CustomArrow;
 import models.CustomCircle;
 import models.CustomRectangle;
 
@@ -26,6 +28,35 @@ public class TestFileGenerator {
 	public void simpleArrows() {
 		ShapeStorage shapeSto = new ShapeStorage();
 		
+		
+		fg.saveDraw(shapeSto.getShapeCollection(),"ddraw4US.save");
+		
+		ShapeStorage shapeSto2 = new ShapeStorage();
+		shapeSto2.setShapeCollection(fg.loadDraw("ddraw4US.save"));
+		
+		int taille = shapeSto.getShapeCollection().size();
+		assertEquals(taille,shapeSto2.getShapeCollection().size());
+		for(int i=0; i<taille; i++) {
+			new CustomArrow();
+			CustomLine body = ((CustomArrow) shapeSto.getShapeCollection().get(i)).getBodyLine();
+			CustomLine rHead = ((CustomArrow) shapeSto.getShapeCollection().get(i)).getlHead();
+			CustomLine lHead = ((CustomArrow) shapeSto.getShapeCollection().get(i)).getrHead();
+			assertEquals(body.toString(),body.toString());
+			assertEquals(body.getStroke(), body.getStroke());
+			assertEquals(body.getStrokeDashArray().toString(), body.getStrokeDashArray().toString());
+			assertEquals(body.getStrokeWidth(), body.getStrokeWidth());
+
+			assertEquals(rHead.toString(),rHead.toString());
+			assertEquals(rHead.getStroke(), rHead.getStroke());
+			assertEquals(rHead.getStrokeDashArray().toString(), rHead.getStrokeDashArray().toString());
+			assertEquals(rHead.getStrokeWidth(), rHead.getStrokeWidth());
+			
+			assertEquals(lHead.toString(),lHead.toString());
+			assertEquals(lHead.getStroke(), lHead.getStroke());
+			assertEquals(lHead.getStrokeDashArray().toString(), lHead.getStrokeDashArray().toString());
+			assertEquals(lHead.getStrokeWidth(), lHead.getStrokeWidth());
+		}
+		assertEquals(shapeSto.getShapeCollection().toString(),shapeSto2.getShapeCollection().toString());
 		testFileGen(shapeSto);
 	}
 

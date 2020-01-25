@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javafx.scene.shape.Shape;
 
 public class CustomArrow extends Shape implements Serializable{
+
+	private static final long serialVersionUID = -2975806758564858636L;
 	private CustomLine bodyLine;
 	private CustomLine rHead;
 	private CustomLine lHead;
@@ -108,5 +110,9 @@ public class CustomArrow extends Shape implements Serializable{
 		this.rHead.setEndY(Math.sin(45)*(this.startY-endY)*length/15+endY);
 		this.lHead.setEndX(Math.cos(-45)*(this.startX-this.endX)*length/15+this.endX);
 		this.lHead.setEndY(Math.sin(-45)*(this.startY-endY)*length/15+endY);
+	}
+	
+	public Shape getArrow() {
+		return Shape.union(Shape.union(rHead, lHead), bodyLine);
 	}
 }
