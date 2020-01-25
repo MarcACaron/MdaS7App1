@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javafx.scene.shape.Shape;
 
 public class CustomArrow extends Shape implements Serializable{
+
+	private static final long serialVersionUID = -2975806758564858636L;
 	private CustomLine bodyLine;
 	private CustomLine rHead;
 	private CustomLine lHead;
