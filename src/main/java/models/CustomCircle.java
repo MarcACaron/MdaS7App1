@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
-import ddraw4US.Drawable;
+import ddraw4US.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
-public class CustomCircle extends Circle implements customSerializable, Drawable{
+public class CustomCircle extends Circle implements customSerializable, Drawable {
 
 	private static final long serialVersionUID = 2672929896832129863L;
 
