@@ -8,7 +8,6 @@ import ddraw4US.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
-import javafx.util.Pair;
 
 public class CustomCircle extends Circle implements customSerializable, Drawable {
 
@@ -56,19 +55,27 @@ public class CustomCircle extends Circle implements customSerializable, Drawable
 		shapeWrite(oos,this);
 	}
 	
-	public Shape draw(Pair<Double, Double> startPositionXY, Pair<Double, Double> finalPositionXY) {
+	public Shape ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd) {
+		double width = Math.abs(posXEnd - posXStart);
+		double height = Math.abs(posYEnd - posYStart);
+		double cote = Math.min(width, height);
+		double posX = posXEnd<posXStart?(posXStart-cote):(posXStart+cote);
+		double posY = posYEnd<posYStart?(posYStart-cote):(posYStart+cote);
+		return new CustomRectangle(posX, posY, cote, cote);
+	}
+
+	@Override
+	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {
+
+		double width = Math.abs(posXEnd - posXStart);
+		double height = Math.abs(posYEnd - posYStart);
+		double cote = Math.min(width, height);
+		double centerX = posXEnd<posXStart?(posXStart-cote/2):(posXStart+cote/2);
+		double centerY = posYEnd<posYStart?(posYStart-cote/2):(posYStart+cote/2);
+		this.setCenterX(centerX);
+		this.setCenterY(centerY);
+		this.setRadius(cote/2);
 		
-		double startX = startPositionXY.getKey();
-		double startY = startPositionXY.getValue();
 		
-		double finalX = finalPositionXY.getKey();
-		double finalY = finalPositionXY.getValue();
-        
-        double x = startX - finalX;
-        double y = startY - finalY;
-        
-        double radius = Math.sqrt(x*x + y*y);
-		
-		return new CustomCircle(startX, startY, radius);
 	}
 }

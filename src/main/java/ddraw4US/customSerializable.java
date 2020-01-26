@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
-import models.CustomCircle;
 
 public interface customSerializable extends Serializable {
 	

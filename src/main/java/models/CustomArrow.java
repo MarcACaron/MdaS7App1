@@ -2,9 +2,10 @@ package models;
 
 import java.io.Serializable;
 
+import ddraw4US.Drawable;
 import javafx.scene.shape.Shape;
 
-public class CustomArrow extends Shape implements Serializable{
+public class CustomArrow extends Shape implements Serializable, Drawable{
 
 	private static final long serialVersionUID = -2975806758564858636L;
 	private CustomLine bodyLine;
@@ -114,5 +115,18 @@ public class CustomArrow extends Shape implements Serializable{
 	
 	public Shape getArrow() {
 		return Shape.union(Shape.union(rHead, lHead), bodyLine);
+	}
+
+	@Override
+	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {//TODO: Orientation des 3 lignes
+		double posX = Math.min(posXStart, posXEnd);
+		double posY = Math.min(posYStart, posYEnd);
+		double endX = Math.max(posXStart, posXEnd);
+		double endY = Math.max(posYStart, posYEnd);
+		this.setStartX(posX);
+		this.setStartY(posY);
+		this.setEndX(endX);
+		this.setEndY(endY);
+		
 	}
 }

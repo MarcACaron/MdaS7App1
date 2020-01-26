@@ -1,10 +1,17 @@
 package ddraw4US;
 
 import javafx.scene.shape.Shape;
-import javafx.util.Pair;
+import models.CustomRectangle;
 
 public interface Drawable {
 	
-	public Shape draw(Pair<Double, Double> startPositionXY, Pair<Double, Double> finalPositionXY);
-
+	default public Shape ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd) {
+		double posX = Math.min(posXStart, posXEnd);
+		double posY = Math.min(posYStart, posYEnd);
+		double width = Math.abs(posXEnd - posXStart);
+		double height = Math.abs(posYEnd - posYStart);
+		return new CustomRectangle(posX, posY, width, height);
+	}
+	
+	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd);
 }
