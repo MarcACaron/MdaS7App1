@@ -39,6 +39,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("../view/RootLayout.fxml"));
             //../
             rootLayout = (BorderPane) loader.load();
+
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -76,13 +77,22 @@ public class MainApp extends Application {
             
             // Set person overview into the center of root layout.
             rootLayout.setCenter(MainOverview);
-            rootLayout.setTop(ColorPaletteOverview);
-            rootLayout.setLeft(FormPaletteOverview);
+//            rootLayout.setTop(ColorPaletteOverview);
+//            rootLayout.setLeft(FormPaletteOverview);
             MainOverview.getChildren().addAll(ScrollPaneOverview);
+            MainOverview.getChildren().addAll(ColorPaletteOverview);
+            MainOverview.getChildren().addAll(FormPaletteOverview);
+            
+            AnchorPane.setTopAnchor(ColorPaletteOverview, 0.0);
+            System.out.println(ColorPaletteOverview.getHeight());
+            AnchorPane.setTopAnchor(FormPaletteOverview,ColorPaletteOverview.getPrefHeight());
+            AnchorPane.setLeftAnchor(FormPaletteOverview, 0.0);
+            
+            
             AnchorPane.setBottomAnchor(ScrollPaneOverview, MainOverview.getMaxHeight());
             AnchorPane.setRightAnchor(ScrollPaneOverview, MainOverview.getMaxWidth());
-            AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getHeight());
-            AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getWidth());
+            AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getPrefHeight());
+            AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getPrefWidth());
 
         } catch (IOException e) {
             e.printStackTrace();
