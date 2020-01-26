@@ -3,39 +3,36 @@ package models;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import ddraw4US.customSerializable;
 import ddraw4US.Drawable;
-import javafx.beans.property.DoubleProperty;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.util.Pair;
 
-public class customCircle extends Circle implements customSerializable, Drawable{
+public class CustomCircle extends Circle implements customSerializable, Drawable{
 
 	private static final long serialVersionUID = 2672929896832129863L;
 
-	public customCircle() {
+	public CustomCircle() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public customCircle(double radius) {
+	public CustomCircle(double radius) {
 		super(radius);
 	}
 
-	public customCircle(double radius, Paint fill) {
+	public CustomCircle(double radius, Paint fill) {
 		super(radius, fill);
 		// TODO Auto-generated constructor stub
 	}
 
-	public customCircle(double centerX, double centerY, double radius) {
+	public CustomCircle(double centerX, double centerY, double radius) {
 		super(centerX, centerY, radius);
 		// TODO Auto-generated constructor stub
 	}
 
-	public customCircle(double centerX, double centerY, double radius, Paint fill) {
+	public CustomCircle(double centerX, double centerY, double radius, Paint fill) {
 		super(centerX, centerY, radius, fill);
 		// TODO Auto-generated constructor stub
 	}
