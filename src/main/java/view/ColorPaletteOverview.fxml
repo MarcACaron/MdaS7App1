@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
 
-
-<HBox prefHeight="30.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox prefHeight="30.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PaletteCouleurController">
    <children>
-      <ColorPicker prefHeight="30.0" prefWidth="100.0" promptText="LineColor" />
-      <ColorPicker prefHeight="30.0" prefWidth="100.0" promptText="FontColor" />
-      <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="Line Size" />
-      <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="Shape Line" />
-      <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="Police Texte" />
+      <ColorPicker fx:id="fill" prefHeight="30.0" prefWidth="100.0" promptText="Fill" />
+      <ColorPicker fx:id="stroke" prefHeight="30.0" prefWidth="100.0" promptText="Stroke" />
+      <ComboBox fx:id="lineWidth" prefHeight="30.0" prefWidth="150.0" promptText="Line Witdh" />
+      <ComboBox fx:id="lineStyle" prefHeight="30.0" prefWidth="150.0" promptText="Line Style" />
+      <ComboBox fx:id="policeText" prefHeight="30.0" prefWidth="150.0" promptText="Police Texte" />
    </children>
 </HBox>
