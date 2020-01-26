@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefHeight="300.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToggleButton mnemonicParsing="false" text="PointerArrow">
+         <toggleGroup>
+            <ToggleGroup fx:id="formToggleGroup" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton fx:id="square" mnemonicParsing="false" text="Square" toggleGroup="$formToggleGroup" />
+      <ToggleButton mnemonicParsing="false" text="Circle" toggleGroup="$formToggleGroup" />
+      <ToggleButton mnemonicParsing="false" text="Line" toggleGroup="$formToggleGroup" />
+      <ToggleButton mnemonicParsing="false" text="Arrow" toggleGroup="$formToggleGroup" />
+      <ToggleButton mnemonicParsing="false" text="Text" toggleGroup="$formToggleGroup" />
+   </children>
+</VBox>
