@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import view.ColorPaletteController;
 
 public class MainApp extends Application {
 
@@ -28,7 +27,6 @@ public class MainApp extends Application {
 
         //showPersonOverview();
         showMainOverview();
-        showPaletteOverview();
     }
     
     /**
@@ -55,18 +53,43 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader1 = new FXMLLoader();
+            FXMLLoader loader2 = new FXMLLoader();
+            FXMLLoader loader3 = new FXMLLoader();
+            FXMLLoader loader4 = new FXMLLoader();
+            FXMLLoader loader5 = new FXMLLoader();
+            FXMLLoader loader6 = new FXMLLoader();
+            
             loader1.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
+            loader2.setLocation(MainApp.class.getResource("../view/ScrollPaneOverview.fxml"));
+            loader3.setLocation(MainApp.class.getResource("../view/FormPaletteOverview.fxml"));
+            loader4.setLocation(MainApp.class.getResource("../view/ColorPaletteOverview.fxml"));
+            loader5.setLocation(MainApp.class.getResource("../view/DrawingZone.fxml"));
+            loader6.setLocation(MainApp.class.getResource("../view/DrawingOverview.fxml"));
+            
             AnchorPane MainOverview = (AnchorPane) loader1.load();
+            AnchorPane ScrollPaneOverview = (AnchorPane) loader2.load();
+            VBox FormPaletteOverview = (VBox) loader3.load();
+            HBox ColorPaletteOverview = (HBox) loader4.load();
+            AnchorPane DrawingZone = (AnchorPane) loader5.load();
+            AnchorPane DrawingOverview = (AnchorPane) loader6.load();            
+            
             
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(MainOverview);       
-            
+            rootLayout.setCenter(MainOverview);
+            rootLayout.setTop(ColorPaletteOverview);
+            rootLayout.setLeft(FormPaletteOverview);
+            MainOverview.getChildren().addAll(ScrollPaneOverview);
+            AnchorPane.setBottomAnchor(ScrollPaneOverview, MainOverview.getMaxHeight());
+            AnchorPane.setRightAnchor(ScrollPaneOverview, MainOverview.getMaxWidth());
+            AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getHeight());
+            AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getWidth());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
-    public void showPaletteOverview() {
+/*    public void showPaletteOverview() {
     	try {
         FXMLLoader loader1 = new FXMLLoader();
         FXMLLoader loader2 = new FXMLLoader();
@@ -79,14 +102,17 @@ public class MainApp extends Application {
         VBox FormPaletteOverview = (VBox) loader3.load();        
         
         // Set person overview into the center of root layout.
-        rootLayout.setCenter(LastOverview);       
+        showMainOverview.setCenter(LastOverview);       
+        AnchorPane.setLeftAnchor(FormPaletteOverview, 0.0);
+        AnchorPane.setTopAnchor(ColorPaletteOverview, 0.0);
+        
         rootLayout.setTop(ColorPaletteOverview);
         rootLayout.setLeft(FormPaletteOverview);
         
     } catch (IOException e) {
         e.printStackTrace();
     }        
-    }
+    }*/
     
     /**
      * Returns the main stage.
