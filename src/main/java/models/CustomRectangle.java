@@ -6,10 +6,7 @@ import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
 import ddraw4US.Drawable;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import javafx.util.Pair;
 
 public class CustomRectangle extends Rectangle implements customSerializable, Drawable {
 
@@ -54,18 +51,20 @@ public class CustomRectangle extends Rectangle implements customSerializable, Dr
 		shapeWrite(oos, this);
 	}
 	
-	public Shape draw(Pair<Double, Double> startPositionXY, Pair<Double, Double> finalPositionXY) {
+
+	@Override
+	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {
+		double posX = Math.min(posXStart, posXEnd);
+		double posY = Math.min(posYStart, posYEnd);
+		double width = Math.abs(posXEnd - posXStart);
+		double height = Math.abs(posYEnd - posYStart);
+		this.setX(posX);
+		this.setY(posY);
+		this.setWidth(width);
+		this.setHeight(height);
 		
-		double startX = startPositionXY.getKey();
-		double startY = startPositionXY.getValue();
-		
-		double finalX = finalPositionXY.getKey();
-		double finalY = finalPositionXY.getValue();
-		
-		double width = Math.max(finalX, startX) - Math.min(finalX, startX);
-		double height = Math.max(finalY, startY) - Math.min(finalY, startY);
-		
-		return new CustomRectangle(startX, startY, width, height);
 	}
+	
+	
 
 }

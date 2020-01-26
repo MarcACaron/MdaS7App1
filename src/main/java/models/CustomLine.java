@@ -4,10 +4,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import ddraw4US.Drawable;
 import ddraw4US.customSerializable;
 import javafx.scene.shape.Line;
 
-public class CustomLine extends Line implements customSerializable{
+public class CustomLine extends Line implements customSerializable, Drawable{
+
+	private static final long serialVersionUID = 602614853301525488L;
 
 	public CustomLine() {
 		// TODO Auto-generated constructor stub
@@ -36,5 +39,18 @@ public class CustomLine extends Line implements customSerializable{
 		oos.writeObject(this.getEndY());
 		
 		shapeWrite(oos, this);
+	}
+
+	@Override
+	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {
+		double posX = Math.min(posXStart, posXEnd);
+		double posY = Math.min(posYStart, posYEnd);
+		double endX = Math.max(posXStart, posXEnd);
+		double endY = Math.max(posYStart, posYEnd);
+		this.setStartX(posX);
+		this.setStartY(posY);
+		this.setEndX(endX);
+		this.setEndY(endY);
+		
 	}
 }
