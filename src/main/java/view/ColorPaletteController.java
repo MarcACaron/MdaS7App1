@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.ComboBox;
 import ddraw4US.MainApp;
-import models.ColorPalette;
 
 public class ColorPaletteController {
     @FXML
