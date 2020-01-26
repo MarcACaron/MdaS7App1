@@ -104,8 +104,10 @@ public class MainApp extends Application {
             AnchorPane.setRightAnchor(ScrollPaneOverview, MainOverview.getMaxWidth());
             AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getPrefHeight());
             AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getPrefWidth());
+
             PaletteFormeController controller3 = loader3.getController();
             controller3.setMainApp(this);
+
 
         } catch (IOException e) {
             e.printStackTrace();
