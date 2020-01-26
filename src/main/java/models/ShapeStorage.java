@@ -22,5 +22,4 @@ public class ShapeStorage {
 	public void setShapeCollection(List<Shape> shapeCollection) {
 		this.shapeCollection = shapeCollection;
 	}	   
-	
 }
