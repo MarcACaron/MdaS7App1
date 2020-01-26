@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Shape;
 import models.CustomLine;
 import models.FileGenerator;
 import models.ShapeStorage;
