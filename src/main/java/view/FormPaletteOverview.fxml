@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="300.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="300.0" prefWidth="50.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PaletteFormeController">
    <children>
-      <ToggleButton mnemonicParsing="false" text="PointerArrow">
+      <ToggleButton fx:id="pointeur" mnemonicParsing="false" text="PointerArrow">
          <toggleGroup>
             <ToggleGroup fx:id="formToggleGroup" />
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="square" mnemonicParsing="false" text="Square" toggleGroup="$formToggleGroup" />
-      <ToggleButton mnemonicParsing="false" text="Circle" toggleGroup="$formToggleGroup" />
-      <ToggleButton mnemonicParsing="false" text="Line" toggleGroup="$formToggleGroup" />
-      <ToggleButton mnemonicParsing="false" text="Arrow" toggleGroup="$formToggleGroup" />
-      <ToggleButton mnemonicParsing="false" text="Text" toggleGroup="$formToggleGroup" />
+      <ToggleButton fx:id="circle" mnemonicParsing="false" text="Circle" toggleGroup="$formToggleGroup" />
+      <ToggleButton fx:id="line" mnemonicParsing="false" text="Line" toggleGroup="$formToggleGroup" />
+      <ToggleButton fx:id="arrow" mnemonicParsing="false" text="Arrow" toggleGroup="$formToggleGroup" />
+      <ToggleButton fx:id="text" mnemonicParsing="false" text="Text" toggleGroup="$formToggleGroup" />
    </children>
 </VBox>
