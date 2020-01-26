@@ -13,21 +13,8 @@ public class DrawingZone {
     private Canvas[] canvases;
     
     //Methods
-    public DrawingZone(int numberOfCanvas, int sizeX, int sizeY) {
-    	size = new int[2];
-    	size[0] = sizeX;
-    	size[1] = sizeY;
-    	
-    	canvases = new Canvas[numberOfCanvas];
-    	for (int i = 0; i < numberOfCanvas; i++) {
-    		canvases[i] = new Canvas(size[0], size[1]);
-    	}
-    	
-    	pane = new Pane();
-    	
-    	for (int i = 0; i < numberOfCanvas; i++) {
-    		pane.getChildren().add(canvases[i]);
-    	}
+    public DrawingZone() {
+    	canvases = new Canvas[4];
     }
     
     public void setSize(int inputSize[]) { this.size = inputSize;}
@@ -36,7 +23,7 @@ public class DrawingZone {
     public void setPane(Pane inputPane) {this.pane = inputPane;}
     public Pane getPane() {return this.pane;}
     
-    public void setCanvas(int canvasNumber, Canvas inputCanvas) {this.canvases[canvasNumber] = inputCanvas;}
+    public void setCanvas(int canvasNumber, Canvas inputCanvas) {this.canvases[canvasNumber-1] = inputCanvas;}
     public Canvas getCanvas(int canvasNumber) {return this.canvases[canvasNumber];}
     
     public Canvas[] getCanvases() {return canvases;}

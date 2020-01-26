@@ -72,6 +72,6 @@ public class customCircle extends Circle implements customSerializable, Drawable
         
         double radius = Math.sqrt(x*x + y*y);
 		
-		return new CustomCircle(startX, startY, radius);
+		return new customCircle(startX, startY, radius);
 	}
 }

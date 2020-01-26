@@ -17,7 +17,7 @@ class DrawingZone_TestCase {
 	void testDrawingZoneConstructor() {
 		DrawingZone zone;
 		for (int i = 0; i < NUMBER_OF_CANVAS_MAX; i++) {
-			zone = new DrawingZone(i, SIZE_X_OF_CANVAS, SIZE_Y_OF_CANVAS);
+			zone = new DrawingZone();
 			assertEquals(zone.getCanvases().length, i);
 			assertEquals(zone.getPane().getChildren().size(), i);
 			for(int j = 0; j < i; j++) {

@@ -2,26 +2,29 @@ package ddraw4US;
 
 import java.io.IOException;
 
+import controllers.DZController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import models.DrawingZone;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private DrawingZone drawingZone;
+    private DZController dZController;
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ddraw4US");
-
+        
         initRootLayout();
-
-        //showPersonOverview();
         showMainOverview();
     }
     
@@ -66,8 +69,11 @@ public class MainApp extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
+            drawingZone = new DrawingZone();
+            dZController = new DZController();
             loader.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
             AnchorPane MainOverview = (AnchorPane) loader.load();
+            loader.setController(dZController);
             
             // Set person overview into the center of root layout.
             rootLayout.setCenter(MainOverview);
@@ -80,9 +86,8 @@ public class MainApp extends Application {
      * Returns the main stage.
      * @return
      */
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+    public Stage getPrimaryStage() {return primaryStage;}
+    public DrawingZone getDrawingZone(){return drawingZone;}
 
     public static void main(String[] args) {
         launch(args);

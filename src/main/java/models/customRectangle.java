@@ -66,7 +66,7 @@ public class customRectangle extends Rectangle implements customSerializable, Dr
 		double width = Math.max(finalX, startX) - Math.min(finalX, startX);
 		double height = Math.max(finalY, startY) - Math.min(finalY, startY);
 		
-		return new CustomRectangle(startX, startY, width, height);
+		return new customRectangle(startX, startY, width, height);
 	}
 
 }

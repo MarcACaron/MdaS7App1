@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainAnchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DZController">
    <children>
       <SplitPane dividerPositions="0.1" layoutX="134.0" layoutY="20.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -72,7 +73,13 @@
                            <children>
                               <ScrollPane fx:id="ScrollPane" layoutX="125.0" layoutY="51.0" prefHeight="353.0" prefWidth="533.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2500.0" prefWidth="2500.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2500.0" prefWidth="2500.0">
+                                       <children>
+                                          <Canvas fx:id="canvas1" height="312.0" layoutX="14.0" layoutY="14.0" width="503.0" />
+                                          <Canvas fx:id="canvas2" height="312.0" layoutX="14.0" layoutY="14.0" width="503.0" />
+                                          <Canvas fx:id="canvas3" height="312.0" layoutX="14.0" layoutY="14.0" width="503.0" />
+                                          <Canvas fx:id="canvas4" height="312.0" layoutX="14.0" layoutY="14.0" width="503.0" />
+                                       </children></AnchorPane>
                                 </content>
                               </ScrollPane>
                            </children>
