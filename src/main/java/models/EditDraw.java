@@ -3,14 +3,6 @@ package models;
 import javafx.scene.shape.Shape;
 
 public class EditDraw {
-	enum EditMode{
-		LINE,
-		ARROW,
-		RECTANGLE,
-		CIRCLE,
-		SELECTION
-	}
-	
 	private EditMode editMode;
 	private Shape actualShape;
 	
