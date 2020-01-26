@@ -13,7 +13,9 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-
+    
+    public MainApp() {
+	}
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -44,23 +46,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Shows the person overview inside the root layout.
-     */
-    /*public void showPersonOverview() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-            
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
     
     public void showMainOverview() {
         try {
@@ -69,7 +54,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
             AnchorPane MainOverview = (AnchorPane) loader.load();
             
-            // Set person overview into the center of root layout.
+            
             rootLayout.setCenter(MainOverview);
         } catch (IOException e) {
             e.printStackTrace();
