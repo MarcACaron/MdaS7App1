@@ -7,7 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import view.ColorPaletteController;
 
 public class MainApp extends Application {
 
@@ -23,6 +26,7 @@ public class MainApp extends Application {
 
         //showPersonOverview();
         showMainOverview();
+        showPaletteOverview();
     }
     
     /**
@@ -44,36 +48,42 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Shows the person overview inside the root layout.
-     */
-    /*public void showPersonOverview() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-            
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
     
     public void showMainOverview() {
         try {
             // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
-            AnchorPane MainOverview = (AnchorPane) loader.load();
+            FXMLLoader loader1 = new FXMLLoader();
+            loader1.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
+            AnchorPane MainOverview = (AnchorPane) loader1.load();
             
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(MainOverview);
+            rootLayout.setCenter(MainOverview);       
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void showPaletteOverview() {
+    	try {
+        FXMLLoader loader1 = new FXMLLoader();
+        FXMLLoader loader2 = new FXMLLoader();
+        FXMLLoader loader3 = new FXMLLoader();    	
+        loader1.setLocation(MainApp.class.getResource("../view/LastOverview.fxml"));
+        loader2.setLocation(MainApp.class.getResource("../view/ColorPaletteOverview.fxml"));
+        loader3.setLocation(MainApp.class.getResource("../view/FormPaletteOverview.fxml"));
+        AnchorPane LastOverview = (AnchorPane) loader1.load();
+        HBox ColorPaletteOverview = (HBox) loader2.load();    
+        VBox FormPaletteOverview = (VBox) loader3.load();        
+        
+        // Set person overview into the center of root layout.
+        rootLayout.setCenter(LastOverview);       
+        rootLayout.setTop(ColorPaletteOverview);
+        rootLayout.setLeft(FormPaletteOverview);
+        
+    } catch (IOException e) {
+        e.printStackTrace();
+    }        
     }
     
     /**
