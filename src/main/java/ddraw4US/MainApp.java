@@ -9,16 +9,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+import models.CustomRectangle;
+import view.PaletteFormeController;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private Shape Tool;
     
     public MainApp() {
+    	this.Tool = new CustomRectangle();
 	}
-    @Override
+    public Shape getTool() {
+		return Tool;
+	}
+	public void setTool(Shape tool) {
+		Tool = tool;
+	}
+	@Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ddraw4US");
@@ -83,6 +94,9 @@ public class MainApp extends Application {
             AnchorPane.setRightAnchor(ScrollPaneOverview, MainOverview.getMaxWidth());
             AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getHeight());
             AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getWidth());
+            
+            PaletteFormeController controller3 = loader3.getController();
+            controller3.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
