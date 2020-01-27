@@ -1,0 +1,62 @@
+package view;
+
+
+
+import ddraw4US.MainApp;
+import ddraw4US.SelectionTool;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Shape;
+
+public class DrawingZoneController {
+	
+	@FXML
+	private Pane pane;
+	
+	private MainApp mainApp;
+	double orgX, orgY;
+	int childIndex;
+	
+	public DrawingZoneController() {
+	}
+	
+	@FXML
+    private void initialize() {
+		pane.setOnMousePressed((t) -> {
+			if(this.mainApp.getTool().getClass()==SelectionTool.class){// Mode selection
+				
+			}else {
+				this.mainApp.getTool().reset();
+				orgX = t.getX();
+				orgY = t.getY();
+				childIndex = pane.getChildren().size();
+				pane.getChildren().add(this.mainApp.getTool().getTool());
+			}
+		});
+		pane.setOnMouseDragged((t) -> {
+			if(this.mainApp.getTool()==null) {// Mode selection
+				
+			}else {
+				this.mainApp.getTool().ajustOnDrag(orgX, orgY, t.getX(), t.getY());
+			}
+		});
+		pane.setOnMouseReleased((t) -> {
+			if(this.mainApp.getTool().getClass()==SelectionTool.class) {// Mode selection
+				
+			}else {
+				Shape sh = (Shape) pane.getChildren().get(childIndex);
+				sh.setOnMouseClicked((t2) -> {
+					if(this.mainApp.getTool().getClass()==SelectionTool.class) {
+						this.mainApp.getTool().setTool(sh);
+					}
+				});
+			}
+		});
+		
+    }
+	
+	public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+        this.mainApp.menuController.setPane(pane);
+    }
+}
