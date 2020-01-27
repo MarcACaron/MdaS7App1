@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
-import ddraw4US.Drawable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-public class CustomRectangle extends Rectangle implements customSerializable, Drawable {
+public class CustomRectangle extends Rectangle implements customSerializable {
 
 	private static final long serialVersionUID = -5631325064753800206L;
 
@@ -52,18 +51,7 @@ public class CustomRectangle extends Rectangle implements customSerializable, Dr
 	}
 	
 
-	@Override
-	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {
-		double posX = Math.min(posXStart, posXEnd);
-		double posY = Math.min(posYStart, posYEnd);
-		double width = Math.abs(posXEnd - posXStart);
-		double height = Math.abs(posYEnd - posYStart);
-		this.setX(posX);
-		this.setY(posY);
-		this.setWidth(width);
-		this.setHeight(height);
-		
-	}
+	
 	
 	
 
