@@ -18,7 +18,7 @@ public class CircleTool extends Tool{
 	@Override
 	public void reset() {
 		this.tool = new CustomCircle();
-		this.tool.setFill(fill);
+		this.fillShape();
 		this.tool.setStroke(stroke);
 		this.tool.setStrokeWidth(lineWidth);
 	}

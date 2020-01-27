@@ -23,7 +23,7 @@ public class RectangleTool extends Tool {
 	@Override
 	public void reset() {
 		this.tool = new CustomRectangle();
-		this.tool.setFill(fill);
+		this.fillShape();
 		this.tool.setStroke(stroke);
 		this.tool.setStrokeWidth(lineWidth);
 	}

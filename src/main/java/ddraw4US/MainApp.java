@@ -20,6 +20,7 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     public MenuController menuController;
+    public PaletteCouleurController paletteCouleurController;
     private Tool Tool;
     
     public MainApp() {
@@ -108,8 +109,8 @@ public class MainApp extends Application {
             controller2.setMainApp(this);
             PaletteFormeController controller3 = loader3.getController();
             controller3.setMainApp(this);
-            PaletteCouleurController controller4 = loader4.getController();
-            controller4.setMainApp(this);
+            this.paletteCouleurController = loader4.getController();
+            this.paletteCouleurController.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();
