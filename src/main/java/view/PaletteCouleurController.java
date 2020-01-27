@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
 public class PaletteCouleurController {
@@ -31,7 +32,6 @@ public class PaletteCouleurController {
 	
 	@FXML
 	private void fillShape() {
-		System.out.println("Working Directory = " + Paths.get("").toAbsolutePath().toString());
 		String imagePath = "images/" + fill.getValue() + ".png";
 		Image image = new Image(imagePath); 
 	    ImagePattern radialGradient = new ImagePattern(image, 50, 50, 200, 200, false);
@@ -48,14 +48,15 @@ public class PaletteCouleurController {
 		if(this.mainApp.getTool().getTool()!=null) {
 			this.mainApp.getTool().getTool().setStroke(stroke.getValue());
 		}
+		Tool.stroke = stroke.getValue();
 	}
 	
 	@FXML
 	private void changeLineWidth() {
-		System.out.println("kjlkjhjh");
 		if(this.mainApp.getTool().getTool()!=null) {
 			this.mainApp.getTool().getTool().setStrokeWidth(lineWidth.getValue().doubleValue());
 		}
+		Tool.lineWidth = lineWidth.getValue().doubleValue();
 	}
 	
 	@FXML
@@ -74,5 +75,8 @@ public class PaletteCouleurController {
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 		fill.setValue("ananas");
+		stroke.setValue(Color.BLACK);
+		Tool.stroke = Color.BLACK;
+		lineWidth.setValue(1.0);
     }
 }

@@ -5,7 +5,10 @@ import javafx.scene.shape.Shape;
 
 public abstract class Tool {
 	public static Paint fill;
-	protected Shape tool;
+	public static Paint stroke;
+	public static double lineWidth;
+	public static double lineStyle;
+	public Shape tool;
 	
 	public Tool() {
 	}

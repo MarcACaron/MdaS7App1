@@ -19,6 +19,8 @@ public class LineTool extends Tool{
 	@Override
 	public void reset() {
 		this.tool = new CustomLine();
+		this.tool.setStroke(stroke);
+		this.tool.setStrokeWidth(lineWidth);
 	}
 		
 

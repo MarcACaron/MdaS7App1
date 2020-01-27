@@ -24,6 +24,8 @@ public class RectangleTool extends Tool {
 	public void reset() {
 		this.tool = new CustomRectangle();
 		this.tool.setFill(fill);
+		this.tool.setStroke(stroke);
+		this.tool.setStrokeWidth(lineWidth);
 	}
 
 }
