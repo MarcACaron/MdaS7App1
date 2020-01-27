@@ -20,6 +20,7 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     public MenuController menuController;
+    public DrawingZoneController drawingZoneController;
     private Tool Tool;
     
     public MainApp() {
@@ -104,8 +105,8 @@ public class MainApp extends Application {
             AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getPrefWidth());
             
             
-            DrawingZoneController controller2 = loader2.getController();
-            controller2.setMainApp(this);
+            drawingZoneController = loader2.getController();
+            drawingZoneController.setMainApp(this);
             PaletteFormeController controller3 = loader3.getController();
             controller3.setMainApp(this);
             PaletteCouleurController controller4 = loader4.getController();
