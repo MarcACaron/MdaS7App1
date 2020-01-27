@@ -1,12 +1,18 @@
 package view;
 
+import java.util.Optional;
+
 import ddraw4US.MainApp;
-import ddraw4US.SelectionTool;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
+
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
+
 
 public class MenuController {
 	
@@ -30,38 +36,27 @@ public class MenuController {
 	}
 	
 	@FXML
-    private void initialize() {
-//		System.out.println(menuBar.getMenus().size());
-//		
-//		for (int i = 0; i < menuBar.getMenus().size(); ++i) {
-//			
-//			String menuText = menuBar.getMenus().get(i).getText();
-//			System.out.println(menuText);
-//			System.out.println(menuBar.getMenus().get(i).getText());
-//			if (menuText == "File") {
-//				
-//				System.out.println("plzzz");
-//				Menu fileMenu = menuBar.getMenus().get(i);
-//				
-//				for (int j = 0; j < fileMenu.getItems().size(); ++j) {
-//					
-//					if (fileMenu.getItems().get(0).getText() == "New") {
-//						
-//						MenuItem newMenuItem = fileMenu.getItems().get(0);
-//						
-//						newMenuItem.setOnAction(e -> {
-//						    this.pane.getChildren().clear();
-//						    System.out.println("je clique");
-//						});
-//						
-//					}
-//				}
-//			}
-//		}
-		
+    private void initialize() {	
 		
 		menuItemNew.setOnAction(e -> {
-		    this.pane.getChildren().clear();
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("");
+			alert.setHeaderText("");
+			alert.setContentText("Do you want to save before creating a new draw?");
+			
+			ButtonType buttonTypeYes = new ButtonType("Yes");
+			ButtonType buttonTypeNo = new ButtonType("No");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+			
+			alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo, buttonTypeCancel);
+
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == buttonTypeYes || result.get() == buttonTypeNo){
+			    this.pane.getChildren().clear();
+			} else if (result.get() == buttonTypeCancel) {
+				
+			}
+			
 		});
 		
     }
