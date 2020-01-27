@@ -6,6 +6,7 @@ import ddraw4US.MainApp;
 import ddraw4US.SelectionTool;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public class DrawingZoneController {
@@ -48,6 +49,9 @@ public class DrawingZoneController {
 				sh.setOnMouseClicked((t2) -> {
 					if(this.mainApp.getTool().getClass()==SelectionTool.class) {
 						this.mainApp.getTool().setTool(sh);
+						this.mainApp.paletteCouleurController.setLineWidth(sh.getStrokeWidth());
+						this.mainApp.paletteCouleurController.setStroke((Color) (sh.getStroke()));
+						this.mainApp.paletteCouleurController.setFill(sh.getAccessibleText()==null?"":sh.getAccessibleText());
 					}
 				});
 			}

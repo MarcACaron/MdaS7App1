@@ -5,7 +5,12 @@ import javafx.scene.shape.Shape;
 
 public abstract class Tool {
 	public static Paint fill;
-	protected Shape tool;
+	public static String fillName;
+	public static Paint stroke;
+	public static double lineWidth;
+	public static double lineStyle;
+	public static boolean startFromCenter;
+	public Shape tool;
 	
 	public Tool() {
 	}
@@ -16,9 +21,10 @@ public abstract class Tool {
 	
 	public abstract void ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd);
 	
-	public void fillShape(Paint paint) {
+	public void fillShape() {
 		if(this.tool!=null) {
-			this.tool.setFill(paint);
+			this.tool.setFill(fill);
+			this.tool.setAccessibleText(fillName);
 		}
 	}
 	public abstract void reset();
