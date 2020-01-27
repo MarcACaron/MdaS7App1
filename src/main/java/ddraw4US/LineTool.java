@@ -10,10 +10,18 @@ public class LineTool extends Tool{
 
 	@Override
 	public void ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd) {
-		((CustomLine) this.tool).setStartX(posXStart);
-		((CustomLine) this.tool).setStartY(posYStart);
-		((CustomLine) this.tool).setEndX(posXEnd);
-		((CustomLine) this.tool).setEndY(posYEnd);
+		if(startFromCenter) {
+			((CustomLine) this.tool).setStartX(posXEnd);
+			((CustomLine) this.tool).setStartY(posYEnd);
+			((CustomLine) this.tool).setEndX(2*posXStart-posXEnd);
+			((CustomLine) this.tool).setEndY(2*posYStart-posYEnd);
+		}else {
+			((CustomLine) this.tool).setStartX(posXStart);
+			((CustomLine) this.tool).setStartY(posYStart);
+			((CustomLine) this.tool).setEndX(posXEnd);
+			((CustomLine) this.tool).setEndY(posYEnd);
+		}
+		
 	}
 
 	@Override

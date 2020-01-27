@@ -9,6 +9,7 @@ public abstract class Tool {
 	public static Paint stroke;
 	public static double lineWidth;
 	public static double lineStyle;
+	public static boolean startFromCenter;
 	public Shape tool;
 	
 	public Tool() {

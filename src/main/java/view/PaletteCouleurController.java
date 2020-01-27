@@ -30,19 +30,22 @@ public class PaletteCouleurController {
 	
 	@FXML
 	private void fillShape() {
-		if(fill.getValue()=="rouge") {
-		    Tool.fill = Color.RED;
-		}else {
-			String imagePath = "images/" + fill.getValue() + ".png";
-			Image image = new Image(imagePath); 
-		    ImagePattern radialGradient = new ImagePattern(image, 50, 50, 200, 200, false);
-		    Tool.fill = radialGradient;
+		if(fill.getValue()!="") {
+			if(fill.getValue()=="rouge") {
+			    Tool.fill = Color.RED;
+			}else {
+				String imagePath = "images/" + fill.getValue() + ".png";
+				Image image = new Image(imagePath); 
+			    ImagePattern radialGradient = new ImagePattern(image, 50, 50, 200, 200, false);
+			    Tool.fill = radialGradient;
+			}
+		    Tool.fillName = fill.getValue();
+			if(this.mainApp.getTool().getTool()!=null) {
+				
+			    this.mainApp.getTool().fillShape();
+			}
 		}
-	    Tool.fillName = fill.getValue();
-		if(this.mainApp.getTool().getTool()!=null) {
-			
-		    this.mainApp.getTool().fillShape();
-		}
+		
 	}
 	
 	public void setFill(String fillName) {

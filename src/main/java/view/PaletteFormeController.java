@@ -5,6 +5,7 @@ import ddraw4US.LineTool;
 import ddraw4US.MainApp;
 import ddraw4US.RectangleTool;
 import ddraw4US.SelectionTool;
+import ddraw4US.Tool;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 
@@ -22,6 +23,8 @@ public class PaletteFormeController {
     private ToggleButton arrow;
 	@FXML
     private ToggleButton text;
+	@FXML
+    private ToggleButton ptDepart;
 	
 	@FXML
 	private void choosePointer() {
@@ -89,6 +92,16 @@ public class PaletteFormeController {
 		}
 		
 	}
+	@FXML
+	private void choosePtDepart() {
+		if(ptDepart.isSelected()) {
+			ptDepart.setText("Coin");
+			Tool.startFromCenter=false;
+		}else {
+			ptDepart.setText("Centre");
+			Tool.startFromCenter=true;
+		}
+	}
 	
 	private MainApp mainApp;
 	
@@ -102,5 +115,6 @@ public class PaletteFormeController {
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 		this.mainApp.setTool(new SelectionTool());
+		Tool.startFromCenter = true;
     }
 }
