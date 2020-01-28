@@ -2,8 +2,6 @@ package view;
 
 
 
-import java.util.function.Function;
-
 import ddraw4US.MainApp;
 import ddraw4US.SelectionTool;
 import ddraw4US.Tool;
