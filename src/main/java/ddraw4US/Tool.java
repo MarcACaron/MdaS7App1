@@ -2,6 +2,7 @@ package ddraw4US;
 
 import java.util.function.Function;
 
+import javafx.scene.Node;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 import view.DetailPaletteController;
@@ -39,5 +40,15 @@ public abstract class Tool {
 		this.tool = tool;
 	}
 	
-	public abstract Function fillDetails(DetailPaletteController paletteDetailController);
+	public abstract void setXPosTool(double value);
+	public abstract void setYPosTool(double value);
+	public abstract void setWidthTool(double value);
+	public abstract void setHeightTool(double value);
+	public abstract void setRadiusTool(double value);
+	public abstract void setLengthTool(double value);
+	public void setAngleTool(double value) {
+		tool.setRotate(value);
+	}
+	
+	public abstract Function fillDetails(DetailPaletteController paletteDetailController, Shape nd);
 }

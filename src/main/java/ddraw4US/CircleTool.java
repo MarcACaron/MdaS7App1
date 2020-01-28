@@ -2,7 +2,10 @@ package ddraw4US;
 
 import java.util.function.Function;
 
+import javafx.scene.Node;
+import javafx.scene.shape.Shape;
 import models.CustomCircle;
+import models.CustomRectangle;
 import view.DetailPaletteController;
 
 public class CircleTool extends Tool{
@@ -28,7 +31,7 @@ public class CircleTool extends Tool{
 		}
 		
 	}
-
+	
 	@Override
 	public void reset() {
 		this.tool = new CustomCircle();
@@ -38,10 +41,39 @@ public class CircleTool extends Tool{
 	}
 
 	@Override
-	public Function fillDetails(DetailPaletteController pc) {
+	public Function fillDetails(DetailPaletteController pc, Shape nd) {
 		return (y) -> {
 			pc.select(true, true, false, true, true);
+			CustomCircle circle = (CustomCircle)nd;
+			pc.setTextField(circle.getCenterX(), circle.getCenterY(), 0.0, 0.0, circle.getRadius(), 0.0, circle.getRotate());
 			return y;
 			};
+	}
+
+	@Override
+	public void setXPosTool(double value) {
+		((CustomCircle)tool).setCenterX(value);
+	}
+
+	@Override
+	public void setYPosTool(double value) {
+		((CustomCircle)tool).setCenterY(value);
+	}
+
+	@Override
+	public void setWidthTool(double value) {
+	}
+
+	@Override
+	public void setHeightTool(double value) {
+	}
+
+	@Override
+	public void setRadiusTool(double value) {
+		((CustomCircle)tool).setRadius(value);
+	}
+
+	@Override
+	public void setLengthTool(double value) {
 	}
 }

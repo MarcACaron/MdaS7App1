@@ -47,17 +47,21 @@ public class DetailPaletteController {
 	@FXML private void initialize() {
 		detailPalette.setDisable(true);
 	}
+	@FXML 
+	private void onXPosChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+	}
 	
 	public void setMainApp(MainApp inputMain){mainApp = inputMain;}
 
-	public void setTextField(String inputField, String inputValue) {
-		if(inputField.compareTo("xPos") == 0) {xPosText.setText(inputValue);}
-		if(inputField.compareTo("yPos") == 0) {yPosText.setText(inputValue);}
-		if(inputField.compareTo("width") == 0) {widthText.setText(inputValue);}
-		if(inputField.compareTo("height") == 0) {heightText.setText(inputValue);}
-		if(inputField.compareTo("radius") == 0) {radiusText.setText(inputValue);}
-		if(inputField.compareTo("length") == 0) {lengthText.setText(inputValue);}
-		if(inputField.compareTo("angle") == 0) {angleText.setText(inputValue);}
+	public void setTextField(double xPos, double yPos, double width, double height, double radius, double length, double angle) {
+		xPosText.setText(String.valueOf(Math.floor(xPos * 100) / 100));
+		yPosText.setText(String.valueOf(Math.floor(yPos * 100) / 100));
+		widthText.setText(String.valueOf(Math.floor(width * 100) / 100));
+		heightText.setText(String.valueOf(Math.floor(height * 100) / 100));
+		radiusText.setText(String.valueOf(Math.floor(radius * 100) / 100));
+		lengthText.setText(String.valueOf(Math.floor(length * 100) / 100));
+		angleText.setText(String.valueOf(Math.floor(angle * 100) / 100));
 		
 	}
 }
