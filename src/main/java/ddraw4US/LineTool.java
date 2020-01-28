@@ -1,6 +1,9 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
 import models.CustomLine;
+import view.DetailPaletteController;
 
 public class LineTool extends Tool{
 
@@ -32,9 +35,11 @@ public class LineTool extends Tool{
 	}
 
 	@Override
-	public void fillDetails(String a) {
-		// TODO Auto-generated method stub
-		
+	public Function fillDetails(DetailPaletteController pc) {
+		return (y) -> {
+			pc.select(true, true, true, false, false);
+			return y;
+			};
 	}
 		
 

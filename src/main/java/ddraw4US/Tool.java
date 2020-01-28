@@ -1,7 +1,10 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
+import view.DetailPaletteController;
 
 public abstract class Tool {
 	public static Paint fill;
@@ -36,5 +39,5 @@ public abstract class Tool {
 		this.tool = tool;
 	}
 	
-	public abstract void fillDetails(String a);
+	public abstract Function fillDetails(DetailPaletteController paletteDetailController);
 }

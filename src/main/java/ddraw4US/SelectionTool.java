@@ -1,6 +1,9 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
 import javafx.scene.shape.Shape;
+import view.DetailPaletteController;
 
 public class SelectionTool extends Tool {
 
@@ -20,13 +23,15 @@ public class SelectionTool extends Tool {
 
 	@Override
 	public void reset() {
-		
+		this.tool = null;
 	}
 
 	@Override
-	public void fillDetails(String a) {
-		// TODO Auto-generated method stub
-		
+	public Function fillDetails(DetailPaletteController pc) {
+		return (y) -> {
+			pc.paletteState(true);
+			return y;
+			};
 	}
 	
 }
