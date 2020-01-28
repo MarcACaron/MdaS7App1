@@ -1,6 +1,5 @@
 package ddraw4US;
 
-import models.CustomLine;
 import models.CustomRectangle;
 
 public class RectangleTool extends Tool {
