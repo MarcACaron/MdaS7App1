@@ -22,5 +22,11 @@ public class SelectionTool extends Tool {
 	public void reset() {
 		
 	}
+
+	@Override
+	public void fillDetails(String a) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

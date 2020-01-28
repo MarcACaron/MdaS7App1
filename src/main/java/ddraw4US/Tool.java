@@ -34,5 +34,7 @@ public abstract class Tool {
 
 	public void setTool(Shape tool) {
 		this.tool = tool;
-	}	
+	}
+	
+	public abstract void fillDetails(String a);
 }

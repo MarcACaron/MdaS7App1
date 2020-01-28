@@ -34,4 +34,10 @@ public class CircleTool extends Tool{
 		this.tool.setStrokeWidth(lineWidth);
 	}
 
+	@Override
+	public void fillDetails(String a) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
