@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import view.DetailPaletteController;
 import view.DrawingZoneController;
 import view.MenuController;
 import view.PaletteCouleurController;
@@ -22,6 +23,7 @@ public class MainApp extends Application {
     public MenuController menuController;
     public DrawingZoneController drawingZoneController;
     public PaletteCouleurController paletteCouleurController;
+    public DetailPaletteController paletteDetailController;
     private Tool Tool;
     
     public MainApp() {
@@ -75,16 +77,19 @@ public class MainApp extends Application {
             FXMLLoader loader2 = new FXMLLoader();
             FXMLLoader loader3 = new FXMLLoader();
             FXMLLoader loader4 = new FXMLLoader();
+            FXMLLoader detailPaletteLoader = new FXMLLoader();
             
             loader1.setLocation(MainApp.class.getResource("../view/MainOverview.fxml"));
             loader2.setLocation(MainApp.class.getResource("../view/ScrollPaneOverview.fxml"));
             loader3.setLocation(MainApp.class.getResource("../view/FormPaletteOverview.fxml"));
             loader4.setLocation(MainApp.class.getResource("../view/ColorPaletteOverview.fxml"));
+            detailPaletteLoader.setLocation(MainApp.class.getResource("../view/DetailPalette.fxml"));
             
             AnchorPane MainOverview = (AnchorPane) loader1.load();
             AnchorPane ScrollPaneOverview = (AnchorPane) loader2.load();
             VBox FormPaletteOverview = (VBox) loader3.load();
-            HBox ColorPaletteOverview = (HBox) loader4.load();           
+            HBox ColorPaletteOverview = (HBox) loader4.load();   
+            VBox detailPaletteOverview = (VBox) detailPaletteLoader.load();
             
             
             // Set person overview into the center of root layout.
@@ -94,16 +99,20 @@ public class MainApp extends Application {
             MainOverview.getChildren().addAll(ScrollPaneOverview);
             MainOverview.getChildren().addAll(ColorPaletteOverview);
             MainOverview.getChildren().addAll(FormPaletteOverview);
+            MainOverview.getChildren().addAll(detailPaletteOverview);
             
             AnchorPane.setTopAnchor(ColorPaletteOverview, 0.0);
             AnchorPane.setTopAnchor(FormPaletteOverview,ColorPaletteOverview.getPrefHeight());
             AnchorPane.setLeftAnchor(FormPaletteOverview, 0.0);
+            AnchorPane.setTopAnchor(detailPaletteOverview,ColorPaletteOverview.getPrefHeight());
+            AnchorPane.setRightAnchor(detailPaletteOverview, 0.0);
             
             
-            AnchorPane.setBottomAnchor(ScrollPaneOverview, MainOverview.getMaxHeight());
-            AnchorPane.setRightAnchor(ScrollPaneOverview, MainOverview.getMaxWidth());
+            AnchorPane.setBottomAnchor(ScrollPaneOverview, MainOverview.getHeight());
+            AnchorPane.setRightAnchor(ScrollPaneOverview, detailPaletteOverview.getPrefWidth());
             AnchorPane.setTopAnchor(ScrollPaneOverview, ColorPaletteOverview.getPrefHeight());
             AnchorPane.setLeftAnchor(ScrollPaneOverview, FormPaletteOverview.getPrefWidth());
+            
             
             
             drawingZoneController = loader2.getController();
@@ -112,6 +121,9 @@ public class MainApp extends Application {
             controller3.setMainApp(this);
             this.paletteCouleurController = loader4.getController();
             this.paletteCouleurController.setMainApp(this);
+            
+            paletteDetailController = detailPaletteLoader.getController();
+            paletteDetailController.setMainApp(this);
 
         } catch (IOException e) {
             e.printStackTrace();

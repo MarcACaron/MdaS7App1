@@ -52,6 +52,7 @@ public class DrawingZoneController {
 						this.mainApp.paletteCouleurController.setLineWidth(sh.getStrokeWidth());
 						this.mainApp.paletteCouleurController.setStroke((Color) (sh.getStroke()));
 						this.mainApp.paletteCouleurController.setFill(sh.getAccessibleText()==null?"":sh.getAccessibleText());
+						//this.mainApp.getTool().fillDetails(this.mainApp.paletteDetailController);
 					}
 				});
 			}
