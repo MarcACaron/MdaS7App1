@@ -30,15 +30,14 @@ public class DetailPaletteController {
 	@FXML	private TextField lengthText;
 	@FXML	private TextField angleText;
 	
-	public void paletteState(boolean pState) {
+	public void paletteDisable(boolean pState) {
 		if(detailPalette.isDisabled()!=pState) {
 			detailPalette.setDisable(pState);
 		}
 	}
 	public void select(boolean width, boolean height, boolean radius, boolean length, boolean angle) {
-		if(detailPalette.isDisabled()) {
-			detailPalette.setDisable(false);
-		}
+		paletteDisable(false);
+		
 		this.width.setDisable(width);
 		this.height.setDisable(height);
 		this.radius.setDisable(radius);
@@ -50,5 +49,15 @@ public class DetailPaletteController {
 	}
 	
 	public void setMainApp(MainApp inputMain){mainApp = inputMain;}
-	
+
+	public void setTextField(String inputField, String inputValue) {
+		if(inputField.compareTo("xPos") == 0) {xPosText.setText(inputValue);}
+		if(inputField.compareTo("yPos") == 0) {yPosText.setText(inputValue);}
+		if(inputField.compareTo("width") == 0) {widthText.setText(inputValue);}
+		if(inputField.compareTo("height") == 0) {heightText.setText(inputValue);}
+		if(inputField.compareTo("radius") == 0) {radiusText.setText(inputValue);}
+		if(inputField.compareTo("length") == 0) {lengthText.setText(inputValue);}
+		if(inputField.compareTo("angle") == 0) {angleText.setText(inputValue);}
+		
+	}
 }
