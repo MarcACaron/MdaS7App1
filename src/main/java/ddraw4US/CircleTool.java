@@ -2,10 +2,8 @@ package ddraw4US;
 
 import java.util.function.Function;
 
-import javafx.scene.Node;
 import javafx.scene.shape.Shape;
 import models.CustomCircle;
-import models.CustomRectangle;
 import view.DetailPaletteController;
 
 public class CircleTool extends Tool{
@@ -16,18 +14,19 @@ public class CircleTool extends Tool{
 
 	public void ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd) {
 		double radius;
+		CustomCircle circle = (CustomCircle)this.tool;
 		if(startFromCenter){
 			radius = Math.sqrt(Math.pow(posXEnd-posXStart, 2)+Math.pow(posYEnd-posYStart, 2));
-			((CustomCircle) this.tool).setCenterX(posXStart);
-			((CustomCircle) this.tool).setCenterY(posYStart);
-			((CustomCircle) this.tool).setRadius(radius);
+			circle.setCenterX(posXStart);
+			circle.setCenterY(posYStart);
+			circle.setRadius(radius);
 		}else {
 			radius = Math.sqrt(Math.pow(posXEnd-posXStart,2)+Math.pow(posYStart-posYEnd,2))/2;
 			double cX = (posXEnd+posXStart)/2;
 			double cY = (posYEnd+posYStart)/2;
-			((CustomCircle) this.tool).setCenterX(cX);
-			((CustomCircle) this.tool).setCenterY(cY);
-			((CustomCircle) this.tool).setRadius(radius);
+			circle.setCenterX(cX);
+			circle.setCenterY(cY);
+			circle.setRadius(radius);
 		}
 		
 	}
@@ -41,39 +40,12 @@ public class CircleTool extends Tool{
 	}
 
 	@Override
-	public Function fillDetails(DetailPaletteController pc, Shape nd) {
+	public Function<Object, Object> fillDetails(DetailPaletteController pc, Shape nd) {
 		return (y) -> {
-			pc.select(true, true, false, true, true);
+			pc.select(true, true, false, true, false);
 			CustomCircle circle = (CustomCircle)nd;
 			pc.setTextField(circle.getCenterX(), circle.getCenterY(), 0.0, 0.0, circle.getRadius(), 0.0, circle.getRotate());
 			return y;
 			};
-	}
-
-	@Override
-	public void setXPosTool(double value) {
-		((CustomCircle)tool).setCenterX(value);
-	}
-
-	@Override
-	public void setYPosTool(double value) {
-		((CustomCircle)tool).setCenterY(value);
-	}
-
-	@Override
-	public void setWidthTool(double value) {
-	}
-
-	@Override
-	public void setHeightTool(double value) {
-	}
-
-	@Override
-	public void setRadiusTool(double value) {
-		((CustomCircle)tool).setRadius(value);
-	}
-
-	@Override
-	public void setLengthTool(double value) {
 	}
 }

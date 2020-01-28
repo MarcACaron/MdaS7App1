@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import models.Transformable;
 
 public class DetailPaletteController {
 	private MainApp mainApp;
@@ -50,6 +51,43 @@ public class DetailPaletteController {
 	@FXML 
 	private void onXPosChange(){
 		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setXPosTool(Double.valueOf(xPosText.getText()));
+	}
+
+	@FXML 
+	private void onYPosChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setYPosTool(Double.valueOf(yPosText.getText()));
+	}
+
+	@FXML 
+	private void onWidthChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setWidthTool(Double.valueOf(widthText.getText()));
+	}
+
+	@FXML 
+	private void onHeightChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setHeightTool(Double.valueOf(heightText.getText()));
+	}
+
+	@FXML 
+	private void onRadiusChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setRadiusTool(Double.valueOf(radiusText.getText()));
+	}
+
+	@FXML 
+	private void onLengthChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setLengthTool(Double.valueOf(lengthText.getText()));
+	}
+
+	@FXML 
+	private void onRotateChange(){
+		//this.mainApp.getTool().getTool().setTranslateX(xPosText);
+		((Transformable)this.mainApp.getTool().getTool()).setRotationTool(Double.valueOf(angleText.getText()));
 	}
 	
 	public void setMainApp(MainApp inputMain){mainApp = inputMain;}
