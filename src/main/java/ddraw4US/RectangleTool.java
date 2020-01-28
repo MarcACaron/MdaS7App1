@@ -1,6 +1,9 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
 import models.CustomRectangle;
+import view.DetailPaletteController;
 
 public class RectangleTool extends Tool {
 
@@ -41,9 +44,10 @@ public class RectangleTool extends Tool {
 	}
 
 	@Override
-	public void fillDetails(String a) {
-		// TODO Auto-generated method stub
-		
+	public Function fillDetails(DetailPaletteController pc) {
+		return (y) -> {
+			pc.select(false, false, true, true, false);
+			return y;
+			};
 	}
-
 }

@@ -1,6 +1,9 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
 import models.CustomCircle;
+import view.DetailPaletteController;
 
 public class CircleTool extends Tool{
 
@@ -35,9 +38,10 @@ public class CircleTool extends Tool{
 	}
 
 	@Override
-	public void fillDetails(String a) {
-		// TODO Auto-generated method stub
-		
+	public Function fillDetails(DetailPaletteController pc) {
+		return (y) -> {
+			pc.select(true, true, false, true, true);
+			return y;
+			};
 	}
-
 }
