@@ -30,6 +30,12 @@ public class LineTool extends Tool{
 		this.tool.setStroke(stroke);
 		this.tool.setStrokeWidth(lineWidth);
 	}
+
+	@Override
+	public void fillDetails(String a) {
+		// TODO Auto-generated method stub
+		
+	}
 		
 
 }
