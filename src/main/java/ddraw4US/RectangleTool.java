@@ -2,6 +2,8 @@ package ddraw4US;
 
 import java.util.function.Function;
 
+import javafx.scene.Node;
+import javafx.scene.shape.Shape;
 import models.CustomRectangle;
 import view.DetailPaletteController;
 
@@ -44,10 +46,40 @@ public class RectangleTool extends Tool {
 	}
 
 	@Override
-	public Function fillDetails(DetailPaletteController pc) {
+	public Function fillDetails(DetailPaletteController pc, Shape nd) {
 		return (y) -> {
 			pc.select(false, false, true, true, false);
+			CustomRectangle rec = (CustomRectangle)nd;
+			pc.setTextField(rec.getX(), rec.getY(), rec.getWidth(), rec.getHeight(), 0.0, 0.0, rec.getRotate());
 			return y;
 			};
+	}
+
+	@Override
+	public void setXPosTool(double value) {
+		((CustomRectangle)tool).setX(value);
+	}
+
+	@Override
+	public void setYPosTool(double value) {
+		((CustomRectangle)tool).setY(value);
+	}
+
+	@Override
+	public void setWidthTool(double value) {
+		((CustomRectangle)tool).setWidth(value);
+	}
+
+	@Override
+	public void setHeightTool(double value) {
+		((CustomRectangle)tool).setHeight(value);
+	}
+
+	@Override
+	public void setRadiusTool(double value) {
+	}
+
+	@Override
+	public void setLengthTool(double value) {
 	}
 }

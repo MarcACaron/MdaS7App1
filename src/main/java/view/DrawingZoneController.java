@@ -28,7 +28,7 @@ public class DrawingZoneController {
     private void initialize() {
 		pane.setOnMousePressed((t) -> {
 			if(this.mainApp.getTool().getClass()==SelectionTool.class){// Mode selection	
-				this.mainApp.getTool().fillDetails(this.mainApp.paletteDetailController).apply(null);
+				this.mainApp.getTool().fillDetails(this.mainApp.paletteDetailController, null).apply(null);
 				this.mainApp.getTool().reset();
 			}else {
 				this.mainApp.getTool().reset();
@@ -57,7 +57,7 @@ public class DrawingZoneController {
 						this.mainApp.paletteCouleurController.setLineWidth(sh.getStrokeWidth());
 						this.mainApp.paletteCouleurController.setStroke((Color) (sh.getStroke()));
 						this.mainApp.paletteCouleurController.setFill(sh.getAccessibleText()==null?"":sh.getAccessibleText());
-						tool.fillDetails(this.mainApp.paletteDetailController).apply(null);
+						tool.fillDetails(this.mainApp.paletteDetailController, sh).apply(null);
 					}
 				});
 			}
