@@ -2,8 +2,11 @@ package view;
 
 
 
+import java.util.function.Function;
+
 import ddraw4US.MainApp;
 import ddraw4US.SelectionTool;
+import ddraw4US.Tool;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -24,8 +27,9 @@ public class DrawingZoneController {
 	@FXML
     private void initialize() {
 		pane.setOnMousePressed((t) -> {
-			if(this.mainApp.getTool().getClass()==SelectionTool.class){// Mode selection
-				
+			if(this.mainApp.getTool().getClass()==SelectionTool.class){// Mode selection	
+				this.mainApp.getTool().fillDetails(this.mainApp.paletteDetailController).apply(null);
+				this.mainApp.getTool().reset();
 			}else {
 				this.mainApp.getTool().reset();
 				orgX = t.getX();
@@ -46,13 +50,14 @@ public class DrawingZoneController {
 				
 			}else {
 				Shape sh = (Shape) pane.getChildren().get(childIndex);
+				Tool tool = this.mainApp.getTool();
 				sh.setOnMouseClicked((t2) -> {
 					if(this.mainApp.getTool().getClass()==SelectionTool.class) {
 						this.mainApp.getTool().setTool(sh);
 						this.mainApp.paletteCouleurController.setLineWidth(sh.getStrokeWidth());
 						this.mainApp.paletteCouleurController.setStroke((Color) (sh.getStroke()));
 						this.mainApp.paletteCouleurController.setFill(sh.getAccessibleText()==null?"":sh.getAccessibleText());
-						//this.mainApp.getTool().fillDetails(this.mainApp.paletteDetailController);
+						tool.fillDetails(this.mainApp.paletteDetailController).apply(null);
 					}
 				});
 			}
