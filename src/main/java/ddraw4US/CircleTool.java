@@ -16,9 +16,9 @@ public class CircleTool extends Tool{
 			((CustomCircle) this.tool).setCenterY(posYStart);
 			((CustomCircle) this.tool).setRadius(radius);
 		}else {
-			radius = Math.min(Math.abs(posXEnd-posXStart),Math.abs(posYStart-posYEnd))/2;
-			double cX = posXStart+(posXStart>posXEnd?-radius:radius);
-			double cY = posYStart+(posYStart>posYEnd?-radius:radius);
+			radius = Math.sqrt(Math.pow(posXEnd-posXStart,2)+Math.pow(posYStart-posYEnd,2))/2;
+			double cX = (posXEnd+posXStart)/2;
+			double cY = (posYEnd+posYStart)/2;
 			((CustomCircle) this.tool).setCenterX(cX);
 			((CustomCircle) this.tool).setCenterY(cY);
 			((CustomCircle) this.tool).setRadius(radius);
