@@ -30,15 +30,14 @@ public class DetailPaletteController {
 	@FXML	private TextField lengthText;
 	@FXML	private TextField angleText;
 	
-	public void paletteState(boolean pState) {
+	public void paletteDisable(boolean pState) {
 		if(detailPalette.isDisabled()!=pState) {
 			detailPalette.setDisable(pState);
 		}
 	}
 	public void select(boolean width, boolean height, boolean radius, boolean length, boolean angle) {
-		if(detailPalette.isDisabled()) {
-			detailPalette.setDisable(false);
-		}
+		paletteDisable(false);
+		
 		this.width.setDisable(width);
 		this.height.setDisable(height);
 		this.radius.setDisable(radius);
@@ -61,3 +60,4 @@ public class DetailPaletteController {
 		if(inputField.compareTo("angle") == 0) {angleText.setText(inputValue);}
 		
 	}
+}

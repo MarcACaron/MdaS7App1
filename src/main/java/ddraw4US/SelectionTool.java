@@ -29,7 +29,7 @@ public class SelectionTool extends Tool {
 	@Override
 	public Function fillDetails(DetailPaletteController pc) {
 		return (y) -> {
-			pc.paletteState(true);
+			pc.paletteDisable(true);
 			return y;
 			};
 	}
