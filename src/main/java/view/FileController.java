@@ -47,7 +47,7 @@ public class FileController {
 			currentFile = fileCandidate;
 			return true;
 		}
-		
+
 		return false;
 
 	}

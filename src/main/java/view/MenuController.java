@@ -69,8 +69,10 @@ public class MenuController {
 		
 		menuItemSaveAs.setOnAction(e -> {
 			
-			if (fileController.AskForFile(mainApp.getPrimaryStage()));
+			if (fileController.AskForFile(mainApp.getPrimaryStage())) {
 				fileController.SaveDrawing(pane);
+			}
+				
 			
 		});
 		
