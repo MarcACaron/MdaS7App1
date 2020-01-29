@@ -5,7 +5,7 @@ import java.io.Serializable;
 import ddraw4US.Drawable;
 import javafx.scene.shape.Shape;
 
-public class CustomArrow extends Shape implements Serializable, Drawable{
+public class CustomArrow extends Shape implements Serializable, Drawable, Identifiable{
 
 	private static final long serialVersionUID = -2975806758564858636L;
 	private CustomLine bodyLine;
@@ -128,5 +128,10 @@ public class CustomArrow extends Shape implements Serializable, Drawable{
 		this.setEndX(endX);
 		this.setEndY(endY);
 		
+	}
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.ARROW;
 	}
 }
