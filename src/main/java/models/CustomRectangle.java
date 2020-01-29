@@ -7,7 +7,7 @@ import ddraw4US.customSerializable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-public class CustomRectangle extends Rectangle implements customSerializable, Transformable {
+public class CustomRectangle extends Rectangle implements customSerializable, Transformable, Identifiable {
 
 	private static final long serialVersionUID = -5631325064753800206L;
 
@@ -85,7 +85,10 @@ public class CustomRectangle extends Rectangle implements customSerializable, Tr
 		
 	}
 	
-	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.RECTANGLE;
+	}
 	
 
 }

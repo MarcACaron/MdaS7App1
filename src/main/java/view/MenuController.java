@@ -21,7 +21,13 @@ public class MenuController {
 	@FXML
 	private MenuBar menuBar;
 	
-	@FXML MenuItem menuItemNew;
+	@FXML private MenuItem menuItemNew;
+	
+	@FXML private MenuItem menuItemSave;
+	
+	@FXML private MenuItem menuItemSaveAs;
+	
+	private FileController fileController;
 	
 	@FXML
 	private void clear() {
@@ -37,6 +43,8 @@ public class MenuController {
 	
 	@FXML
     private void initialize() {	
+		
+		fileController = FileController.getInstance();
 		
 		menuItemNew.setOnAction(e -> {
 			Alert alert = new Alert(AlertType.WARNING);
@@ -55,6 +63,24 @@ public class MenuController {
 			    this.pane.getChildren().clear();
 			} else if (result.get() == buttonTypeCancel) {
 				
+			}
+			
+		});
+		
+		menuItemSaveAs.setOnAction(e -> {
+			
+			if (fileController.AskForFile(mainApp.getPrimaryStage()));
+				fileController.SaveDrawing(pane);
+			
+		});
+		
+		menuItemSave.setOnAction(e -> {
+			
+			if (fileController.getCurrentFile() == null) {
+				if (fileController.AskForFile(mainApp.getPrimaryStage())) {
+					fileController.SaveDrawing(pane);
+				}
+					
 			}
 			
 		});

@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import ddraw4US.customSerializable;
 import javafx.scene.shape.Line;
 
-public class CustomLine extends Line implements customSerializable, Transformable{
+public class CustomLine extends Line implements customSerializable, Transformable, Identifiable{
 
 	private static final long serialVersionUID = 602614853301525488L;
 
@@ -72,5 +72,10 @@ public class CustomLine extends Line implements customSerializable, Transformabl
 	public void setRotationTool(double value) {
 		this.setRotate(value);
 		
+	}
+	
+	@Override
+	public ShapeType getShapeType() {
+		return ShapeType.LINE;
 	}
 }
