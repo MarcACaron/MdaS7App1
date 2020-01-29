@@ -11,7 +11,7 @@ public class testDetailPaletteController {
 	private DetailPaletteController detailPaletteController;
 	
 	@Test
-	private void paletteDisable_test() {
+	public void paletteDisable_test() {
 		detailPaletteController = new DetailPaletteController();
 		
 		detailPaletteController.paletteDisable(true);
@@ -22,7 +22,7 @@ public class testDetailPaletteController {
 	}
 	
 	@Test
-	private void select_test() {
+	public void select_test() {
 		detailPaletteController.select(false, false, false, false, false);
 		assertEquals(detailPaletteController.getXPosText(), false);
 		assertEquals(detailPaletteController.getRadiusText(), false);

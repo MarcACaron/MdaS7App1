@@ -1,5 +1,7 @@
 package testModels;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.*;
 import org.junit.jupiter.api.Test;
 
 import javafx.scene.shape.Shape;
@@ -15,8 +17,6 @@ public class testEditDraw {
 		Shape sh = new CustomArrow();
 		ed.setActualShape(sh);
 		assertEquals(true, sh.equals(ed.getActualShape()));
-		
-		
 	}
 	
 	@Test
