@@ -19,8 +19,8 @@
               <MenuItem mnemonicParsing="false" text="Open" />
               <MenuItem mnemonicParsing="false" text="Open as" />
               <MenuItem mnemonicParsing="false" text="Close" />
-              <MenuItem mnemonicParsing="false" text="Save" />
-              <MenuItem mnemonicParsing="false" text="Save as" />              
+              <MenuItem fx:id="menuItemSave" mnemonicParsing="false" text="Save" />
+              <MenuItem fx:id="menuItemSaveAs" mnemonicParsing="false" text="Save as" />              
               <MenuItem mnemonicParsing="false" text="Revert" />
               <MenuItem mnemonicParsing="false" text="Page Setup" />
               <MenuItem mnemonicParsing="false" text="Print" />
