@@ -9,30 +9,15 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 
 
-public class XmlEncoder {
-	
-	private static String posX = "posX";
-	private static String posY = "posY";
-	private static String width = "width";
-	private static String height = "height";
-	private static String strokeWidth = "strokeWidth";
-	private static String strokeColor = "strokeColor";
-	private static String fill = "fill";
-	private static String radius = "radius";
-	
-	private static String startPosX = "startPosX";
-	private static String startPosY = "startPosY";
-	private static String endPosX = "endPosX";
-	private static String endPosY = "endPosY";
-	
+public class XmlEncoder extends XmlStrings {
 	
 	public static Boolean createXML(ObservableList<Node> shapeList, File file) {
 		
@@ -64,7 +49,7 @@ public class XmlEncoder {
 					rectangle.setAttribute(height, String.valueOf(rectShape.getHeight()));
 					rectangle.setAttribute(strokeWidth, String.valueOf(rectShape.getStrokeWidth()));
 					rectangle.setAttribute(strokeColor, String.valueOf(rectShape.getStroke()));
-					rectangle.setAttribute(fill, String.valueOf(rectShape.getFill()));
+					rectangle.setAttribute(fill, rectShape.getAccessibleText());
 					
 					root.appendChild(rectangle);
 
@@ -80,7 +65,7 @@ public class XmlEncoder {
 					circle.setAttribute(radius, String.valueOf(circShape.getRadius()));
 					circle.setAttribute(strokeWidth, String.valueOf(circShape.getStrokeWidth()));
 					circle.setAttribute(strokeColor, String.valueOf(circShape.getStroke()));
-					circle.setAttribute(fill, String.valueOf(circShape.getFill()));
+					circle.setAttribute(fill, circShape.getAccessibleText());
 					
 					root.appendChild(circle);
 
@@ -88,6 +73,7 @@ public class XmlEncoder {
 				} else if (a.getShapeType() == ShapeType.LINE) {
 
 					CustomLine lineShape = (CustomLine)(shapeList.get(i));
+					
 
 					Element line = doc.createElement("line");
 					
