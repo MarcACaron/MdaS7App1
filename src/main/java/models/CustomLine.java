@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import ddraw4US.Drawable;
 import ddraw4US.customSerializable;
 import javafx.scene.shape.Line;
 
-public class CustomLine extends Line implements customSerializable, Drawable{
+public class CustomLine extends Line implements customSerializable, Transformable{
 
 	private static final long serialVersionUID = 602614853301525488L;
 
@@ -40,17 +39,38 @@ public class CustomLine extends Line implements customSerializable, Drawable{
 		
 		shapeWrite(oos, this);
 	}
+	
+	@Override
+	public void setXPosTool(double value) {
+		this.setStartX(value);
+	}
 
 	@Override
-	public void endAjust(double posXStart, double posYStart, double posXEnd, double posYEnd) {
-		double posX = Math.min(posXStart, posXEnd);
-		double posY = Math.min(posYStart, posYEnd);
-		double endX = Math.max(posXStart, posXEnd);
-		double endY = Math.max(posYStart, posYEnd);
-		this.setStartX(posX);
-		this.setStartY(posY);
-		this.setEndX(endX);
-		this.setEndY(endY);
+	public void setYPosTool(double value) {
+		this.setStartY(value);
+	}
+
+	@Override
+	public void setWidthTool(double value) {
+	}
+
+	@Override
+	public void setHeightTool(double value) {
+	}
+
+	@Override
+	public void setRadiusTool(double value) {
+	}
+
+	@Override
+	public void setLengthTool(double value) {
+		this.setEndX(this.getStartX()+Math.cos(this.getRotate())*value);
+		this.setEndX(this.getStartX()+Math.cos(this.getRotate())*value);
+	}
+	
+	@Override
+	public void setRotationTool(double value) {
+		this.setRotate(value);
 		
 	}
 }

@@ -7,7 +7,7 @@ import ddraw4US.customSerializable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-public class CustomRectangle extends Rectangle implements customSerializable {
+public class CustomRectangle extends Rectangle implements customSerializable, Transformable {
 
 	private static final long serialVersionUID = -5631325064753800206L;
 
@@ -51,6 +51,39 @@ public class CustomRectangle extends Rectangle implements customSerializable {
 	}
 	
 
+	@Override
+	public void setXPosTool(double value) {
+		this.setX(value);
+	}
+
+	@Override
+	public void setYPosTool(double value) {
+		this.setY(value);
+	}
+
+	@Override
+	public void setWidthTool(double value) {
+		this.setWidth(value);
+	}
+
+	@Override
+	public void setHeightTool(double value) {
+		this.setHeight(value);
+	}
+
+	@Override
+	public void setRadiusTool(double value) {
+	}
+
+	@Override
+	public void setLengthTool(double value) {
+	}
+
+	@Override
+	public void setRotationTool(double value) {
+		this.setRotate(value);
+		
+	}
 	
 	
 	

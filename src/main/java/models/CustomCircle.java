@@ -7,7 +7,7 @@ import ddraw4US.customSerializable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
-public class CustomCircle extends Circle implements customSerializable {
+public class CustomCircle extends Circle implements customSerializable, Transformable {
 
 	private static final long serialVersionUID = 2672929896832129863L;
 
@@ -53,5 +53,31 @@ public class CustomCircle extends Circle implements customSerializable {
 		shapeWrite(oos,this);
 	}
 	
+	public void setXPosTool(double value) {
+		this.setCenterX(value);
+	}
+
+	public void setYPosTool(double value) {
+		this.setCenterY(value);
+	}
+
+	public void setWidthTool(double value) {
+	}
+
+	public void setHeightTool(double value) {
+	}
+
+	public void setRadiusTool(double value) {
+		this.setRadius(value);
+	}
+
+	public void setLengthTool(double value) {
+	}
+
+	@Override
+	public void setRotationTool(double value) {
+		this.setRotate(value);
+		
+	}
 	
 }

@@ -1,6 +1,10 @@
 package ddraw4US;
 
+import java.util.function.Function;
+
+import javafx.scene.shape.Shape;
 import models.CustomCircle;
+import view.DetailPaletteController;
 
 public class CircleTool extends Tool{
 
@@ -9,16 +13,39 @@ public class CircleTool extends Tool{
 	}
 
 	public void ajustOnDrag(double posXStart, double posYStart, double posXEnd, double posYEnd) {
-		double radius = Math.sqrt(Math.pow(posXEnd-posXStart, 2)+Math.pow(posYEnd-posYStart, 2));
-		((CustomCircle) this.tool).setCenterX(posXStart);
-		((CustomCircle) this.tool).setCenterY(posYStart);
-		((CustomCircle) this.tool).setRadius(radius);
+		double radius;
+		CustomCircle circle = (CustomCircle)this.tool;
+		if(startFromCenter){
+			radius = Math.sqrt(Math.pow(posXEnd-posXStart, 2)+Math.pow(posYEnd-posYStart, 2));
+			circle.setCenterX(posXStart);
+			circle.setCenterY(posYStart);
+			circle.setRadius(radius);
+		}else {
+			radius = Math.sqrt(Math.pow(posXEnd-posXStart,2)+Math.pow(posYStart-posYEnd,2))/2;
+			double cX = (posXEnd+posXStart)/2;
+			double cY = (posYEnd+posYStart)/2;
+			circle.setCenterX(cX);
+			circle.setCenterY(cY);
+			circle.setRadius(radius);
+		}
+		
 	}
-
+	
 	@Override
 	public void reset() {
 		this.tool = new CustomCircle();
-		this.tool.setFill(fill);
+		this.fillShape();
+		this.tool.setStroke(stroke);
+		this.tool.setStrokeWidth(lineWidth);
 	}
 
+	@Override
+	public Function<Object, Object> fillDetails(DetailPaletteController pc, Shape nd) {
+		return (y) -> {
+			pc.select(true, true, false, true, false);
+			CustomCircle circle = (CustomCircle)nd;
+			pc.setTextField(circle.getCenterX(), circle.getCenterY(), 0.0, 0.0, circle.getRadius(), 0.0, circle.getRotate());
+			return y;
+			};
+	}
 }

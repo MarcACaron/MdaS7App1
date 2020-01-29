@@ -1,7 +1,5 @@
 package view;
 
-import java.nio.file.Paths;
-
 import ddraw4US.MainApp;
 import ddraw4US.Tool;
 import javafx.collections.FXCollections;
@@ -9,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
 public class PaletteCouleurController {
@@ -23,6 +23,8 @@ public class PaletteCouleurController {
     private ChoiceBox<double[]> lineStyle;
 	@FXML
     private ChoiceBox<int[]> policeText;
+    @FXML
+    private ImageView detailsImage;
 	
 	private MainApp mainApp;
 		
@@ -31,31 +33,49 @@ public class PaletteCouleurController {
 	
 	@FXML
 	private void fillShape() {
-		System.out.println("Working Directory = " + Paths.get("").toAbsolutePath().toString());
-		String imagePath = "images/" + fill.getValue() + ".png";
-		Image image = new Image(imagePath); 
-	    ImagePattern radialGradient = new ImagePattern(image, 50, 50, 200, 200, false);
-		if(this.mainApp.getTool().getTool()!=null) {
-			
-		    this.mainApp.getTool().fillShape(radialGradient);
-			//this.mainApp.getTool().fillShape(fill.getValue());
+		if(fill.getValue()!="") {
+			if(fill.getValue()=="rouge") {
+			    Tool.fill = Color.RED;
+			}else {
+				String imagePath = "images/" + fill.getValue() + ".png";
+				Image image = new Image(imagePath); 
+			    ImagePattern radialGradient = new ImagePattern(image, 50, 50, 200, 200, false);
+			    Tool.fill = radialGradient;
+			}
+		    Tool.fillName = fill.getValue();
+			if(this.mainApp.getTool().getTool()!=null) {
+				
+			    this.mainApp.getTool().fillShape();
+			}
 		}
-	    Tool.fill = radialGradient;
+		
 	}
 	
+	public void setFill(String fillName) {
+		this.fill.setValue(fillName);
+	}
+	public void setStroke(Color stroke) {
+		this.stroke.setValue(stroke);
+	}
+
+	public void setLineWidth(double lineWidth) {
+		this.lineWidth.setValue(lineWidth);
+	}
+
 	@FXML
 	private void changeStrokeColor() {
 		if(this.mainApp.getTool().getTool()!=null) {
 			this.mainApp.getTool().getTool().setStroke(stroke.getValue());
 		}
+		Tool.stroke = stroke.getValue();
 	}
 	
 	@FXML
 	private void changeLineWidth() {
-		System.out.println("kjlkjhjh");
 		if(this.mainApp.getTool().getTool()!=null) {
 			this.mainApp.getTool().getTool().setStrokeWidth(lineWidth.getValue().doubleValue());
 		}
+		Tool.lineWidth = lineWidth.getValue().doubleValue();
 	}
 	
 	@FXML
@@ -64,7 +84,7 @@ public class PaletteCouleurController {
 		lineWidth.setOnAction((t)->{
 			changeLineWidth();
 		});
-		fill.setItems(FXCollections.observableArrayList("ananas","dirt"));
+		fill.setItems(FXCollections.observableArrayList("ananas","dirt","rouge"));
 		fill.setOnAction((t)->{
 			fillShape();
 		});
@@ -74,5 +94,8 @@ public class PaletteCouleurController {
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 		fill.setValue("ananas");
+		stroke.setValue(Color.BLACK);
+		Tool.stroke = Color.BLACK;
+		lineWidth.setValue(1.0);
     }
 }
