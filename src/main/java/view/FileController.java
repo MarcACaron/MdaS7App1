@@ -6,6 +6,10 @@ import com.sun.javafx.geom.Shape;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -14,9 +18,11 @@ import models.CustomLine;
 import models.CustomRectangle;
 import models.Identifiable;
 import models.ShapeType;
+import models.XmlDecoder;
 import models.XmlEncoder;
 
 import java.io.File;
+import java.util.Optional;
 
 public class FileController {
 
@@ -30,7 +36,7 @@ public class FileController {
 	private FileChooser fileChooser;
 	private File currentFile;
 
-	public Boolean AskForFile(Stage primaryStage) {
+	public Boolean askForFile(Stage primaryStage) {
 		
 		fileChooser = new FileChooser();
 		if (currentFile != null) {
@@ -52,7 +58,7 @@ public class FileController {
 
 	}
 
-	public void SaveDrawing(Pane pane) {
+	public void saveDrawing(Pane pane) {
 		ObservableList<Node> shapeList = pane.getChildren();
 
 		XmlEncoder.createXML(shapeList, currentFile);
@@ -62,6 +68,70 @@ public class FileController {
 	public File getCurrentFile() {
 		return currentFile;
 	}
+	
+	public void clearFile() {
+		currentFile = null;
+	}
+	
+	public Boolean askToSave(Stage stage, Pane pane) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("");
+		alert.setHeaderText("");
+		alert.setContentText("Do you want to save before creating a new draw?");
+		
+		ButtonType buttonTypeYes = new ButtonType("Yes");
+		ButtonType buttonTypeNo = new ButtonType("No");
+		ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		
+		alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo, buttonTypeCancel);
 
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == buttonTypeYes){
+			if (getCurrentFile() == null ) {
+				askForFile(stage);
+			}
+			
+			if (getCurrentFile() != null) {
+				saveDrawing(pane);
+			} else {
+				return false;
+			}
+		    return true;
+		} else if (result.get() == buttonTypeNo) {
+			return true;
+		} else if (result.get() == buttonTypeCancel) {
+			return false;
+		}
+		return false;
+	}
+
+	public void openFile(Stage stage, Pane pane) {
+		
+		fileChooser = new FileChooser();
+		if (currentFile != null) {
+			fileChooser.setInitialDirectory(currentFile.getParentFile());
+		}
+		
+		fileChooser.setTitle("Open Drawing");
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files", "*.xml");
+		fileChooser.getExtensionFilters().add(extFilter);
+		
+		File fileCandidate = fileChooser.showOpenDialog(stage);
+		
+		if (fileCandidate != null && fileCandidate.isFile()) {
+			pane.getChildren().clear();
+			System.out.println(pane.getChildren().size());
+			currentFile = fileCandidate;
+			ObservableList<Node> a = XmlDecoder.readXML(currentFile, pane);
+			
+			System.out.println(pane.getChildren().size());
+			
+//			for (int i = 0; i < a.size(); ++i) {
+//				System.out.println("YOOOO");
+//				pane.getChildren().add(a.get(i));
+//			}
+			//pane.getChildren().addAll(a);
+		}
+	}
 
 }

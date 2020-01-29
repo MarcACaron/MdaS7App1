@@ -27,6 +27,8 @@ public class MenuController {
 	
 	@FXML private MenuItem menuItemSaveAs;
 	
+	@FXML private MenuItem menuItemOpen;
+	
 	private FileController fileController;
 	
 	@FXML
@@ -47,30 +49,18 @@ public class MenuController {
 		fileController = FileController.getInstance();
 		
 		menuItemNew.setOnAction(e -> {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("");
-			alert.setHeaderText("");
-			alert.setContentText("Do you want to save before creating a new draw?");
-			
-			ButtonType buttonTypeYes = new ButtonType("Yes");
-			ButtonType buttonTypeNo = new ButtonType("No");
-			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
-			
-			alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo, buttonTypeCancel);
 
-			Optional<ButtonType> result = alert.showAndWait();
-			if (result.get() == buttonTypeYes || result.get() == buttonTypeNo){
-			    this.pane.getChildren().clear();
-			} else if (result.get() == buttonTypeCancel) {
-				
+			if (fileController.askToSave(mainApp.getPrimaryStage(), pane)) {
+				pane.getChildren().clear();
+				fileController.clearFile();
 			}
 			
 		});
 		
 		menuItemSaveAs.setOnAction(e -> {
 			
-			if (fileController.AskForFile(mainApp.getPrimaryStage())) {
-				fileController.SaveDrawing(pane);
+			if (fileController.askForFile(mainApp.getPrimaryStage())) {
+				fileController.saveDrawing(pane);
 			}
 				
 			
@@ -79,9 +69,18 @@ public class MenuController {
 		menuItemSave.setOnAction(e -> {
 			
 			if (fileController.getCurrentFile() == null) {
-				if (fileController.AskForFile(mainApp.getPrimaryStage())) {
-					fileController.SaveDrawing(pane);
+				if (fileController.askForFile(mainApp.getPrimaryStage())) {
+					fileController.saveDrawing(pane);
 				}
+					
+			}
+			
+		});
+		
+		menuItemOpen.setOnAction(e -> {
+			
+			if (fileController.askToSave(mainApp.getPrimaryStage(), pane)) {
+				fileController.openFile(mainApp.getPrimaryStage(), pane);
 					
 			}
 			
@@ -96,4 +95,7 @@ public class MenuController {
 	public void setPane(Pane pane) {
 		this.pane = pane;
 	}
+	
+	
+	
 }
