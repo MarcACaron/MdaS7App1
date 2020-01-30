@@ -25,21 +25,9 @@ import org.testfx.api.FxAssert;
 import view.DetailPaletteController;
 
 
-public class TestMenuController extends ApplicationTest{
-	private MainApp mainApp;
-	
+public class TestMenuController extends testApplicationUI{
+
 	private MenuBar menuBar;
-	
-	@Override
-	public void start(Stage stage) {
-		mainApp = new MainApp();
-		mainApp.start(stage);
-		mainApp.getPrimaryStage().toFront();
-	}
-	
-	public <T extends Node> T find(final String query) {
-		return lookup(query).query();
-	}
 	
 	@Test
 	public void test_MenuBar_Layout() {

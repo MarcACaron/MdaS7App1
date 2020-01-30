@@ -25,43 +25,29 @@ import org.testfx.api.FxAssert;
 import view.DetailPaletteController;
 
 
-public class testDetailPaletteController extends ApplicationTest{
-	private MainApp mainApp;
+public class testDetailPaletteController extends testApplicationUI{
 	
-	private MenuBar menuBar;
+	private VBox detailPalette;
+	private VBox positionSection; 
+	private VBox dimensionSection;
+	private VBox angleSection;
 
-		private VBox detailPalette;
-		private VBox positionSection; 
-		private VBox dimensionSection;
-		private VBox angleSection;
-	
-		private HBox xPos;
-		private HBox yPos;
-		private HBox width;
-		private HBox height;
-		private HBox radius;
-		private HBox length;
-		private HBox angle;
-	
-		private TextField xPosText;
-		private TextField yPosText;
-		private TextField widthText;
-		private TextField heightText;
-		private TextField radiusText;
-		private TextField lengthText;
-		private TextField angleText;
+	private HBox xPos;
+	private HBox yPos;
+	private HBox width;
+	private HBox height;
+	private HBox radius;
+	private HBox length;
+	private HBox angle;
 
-	
-	@Override
-	public void start(Stage stage) {
-		mainApp = new MainApp();
-		mainApp.start(stage);
-		mainApp.getPrimaryStage().toFront();
-	}
-	
-	public <T extends Node> T find(final String query) {
-		return lookup(query).query();
-	}
+	private TextField xPosText;
+	private TextField yPosText;
+	private TextField widthText;
+	private TextField heightText;
+	private TextField radiusText;
+	private TextField lengthText;
+	private TextField angleText;
+
 	
 	@Test
 	@DisplayName("TO DO - test_DetailPalette_Layout")
