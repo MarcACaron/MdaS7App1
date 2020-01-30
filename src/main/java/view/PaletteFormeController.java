@@ -8,6 +8,8 @@ import ddraw4US.SelectionTool;
 import ddraw4US.Tool;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class PaletteFormeController {
 	
@@ -20,11 +22,9 @@ public class PaletteFormeController {
 	@FXML
     private ToggleButton line;
 	@FXML
-    private ToggleButton arrow;
-	@FXML
-    private ToggleButton text;
-	@FXML
     private ToggleButton ptDepart;
+	@FXML
+	private ImageView ptDepartImage;
 	
 	@FXML
 	private void choosePointer() {
@@ -71,34 +71,14 @@ public class PaletteFormeController {
 		
 	}
 	@FXML
-	private void chooseArrow() {
-		if(arrow.isSelected()) {
-			//this.mainApp.setTool(new CustomLine());
-			//System.out.println(this.mainApp.getTool().getTool().getClass());
-		}else {
-			this.mainApp.setTool(new SelectionTool());
-			pointeur.setSelected(true);
-		}
-		
-	}
-	@FXML
-	private void chooseText() {
-		if(text.isSelected()) {
-			//this.mainApp.setTool(new CustomLine());
-			//System.out.println(this.mainApp.getTool().getTool().getClass());
-		}else {
-			this.mainApp.setTool(new SelectionTool());
-			pointeur.setSelected(true);
-		}
-		
-	}
-	@FXML
 	private void choosePtDepart() {
 		if(ptDepart.isSelected()) {
-			ptDepart.setText("Coin");
+			//ptDepart.setText("Coin");
+			ptDepartImage.setImage(new Image("images/corner.png"));
 			Tool.startFromCenter=false;
 		}else {
-			ptDepart.setText("Centre");
+			//ptDepart.setText("Centre");
+			ptDepartImage.setImage(new Image("images/center.png"));
 			Tool.startFromCenter=true;
 		}
 	}
