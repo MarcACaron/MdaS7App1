@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PaletteFormeController">
+<VBox prefWidth="100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PaletteFormeController">
    <children>
       <ToggleButton fx:id="pointeur" mnemonicParsing="false" onAction="#choosePointer" prefWidth="100.0">
          <toggleGroup>
@@ -55,9 +53,9 @@
       
       <ToggleButton fx:id="ptDepart" mnemonicParsing="false" onAction="#choosePtDepart" prefWidth="100.0">
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ptDepartImage" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             	<image>
-            		<Image url="@../images/DrawFrom.png" />
+            		<Image url="@../images/Center.png" />
             	</image>
             </ImageView>
          </graphic></ToggleButton>

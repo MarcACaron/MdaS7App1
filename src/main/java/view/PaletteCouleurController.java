@@ -9,6 +9,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
@@ -116,5 +118,8 @@ public class PaletteCouleurController {
 		Tool.stroke = Color.BLACK;
 		lineWidth.setValue(1.0);
 		this.fillShape("ananas");
+		this.fillAnanas.setBackground(new Background(new BackgroundFill(new ImagePattern(new Image("images/ananas.png"), 45, 55, 100, 100, false), null, null)));
+		this.fillDirt.setBackground(new Background(new BackgroundFill(new ImagePattern(new Image("images/dirt.png"), 0, 0, 200, 200, false), null, null)));
+		this.fillRed.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));//new ImageView(new ImagePattern(new Image("images/dirt.png"), 50, 50, 200, 200, false)));
     }
 }
