@@ -1,15 +1,9 @@
 package models;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import ddraw4US.customSerializable;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-public class CustomRectangle extends Rectangle implements customSerializable, Transformable, Identifiable {
-
-	private static final long serialVersionUID = -5631325064753800206L;
+public class CustomRectangle extends Rectangle implements Transformable, Identifiable {
 
 	public CustomRectangle() {
 		// TODO Auto-generated constructor stub
@@ -29,27 +23,6 @@ public class CustomRectangle extends Rectangle implements customSerializable, Tr
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
-	
-	private void readObject(final ObjectInputStream ois) throws IOException, ClassNotFoundException {
-		this.setX((double) ois.readObject());
-		this.setY((double) ois.readObject());
-		this.setWidth((double) ois.readObject());
-		this.setHeight((double) ois.readObject());
-		
-		//Structure commune
-		//Structure commune
-		shapeRead(ois, this);
-	}
-
-	private void writeObject(final ObjectOutputStream oos) throws IOException {
-		oos.writeObject(this.getX());
-		oos.writeObject(this.getY());
-		oos.writeObject(this.getWidth());
-		oos.writeObject(this.getHeight());
-		
-		shapeWrite(oos, this);
-	}
-	
 
 	@Override
 	public void setXPosTool(double value) {

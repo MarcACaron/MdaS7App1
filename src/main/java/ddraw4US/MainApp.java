@@ -38,7 +38,7 @@ public class MainApp extends Application {
 	@Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ddraw4US");
+        this.primaryStage.setTitle("adraw4US");
 
         initRootLayout();
 
