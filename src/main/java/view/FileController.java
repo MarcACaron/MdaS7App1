@@ -122,15 +122,8 @@ public class FileController {
 			pane.getChildren().clear();
 			System.out.println(pane.getChildren().size());
 			currentFile = fileCandidate;
-			ObservableList<Node> a = XmlDecoder.readXML(currentFile, pane);
-			
-			System.out.println(pane.getChildren().size());
-			
-//			for (int i = 0; i < a.size(); ++i) {
-//				System.out.println("YOOOO");
-//				pane.getChildren().add(a.get(i));
-//			}
-			//pane.getChildren().addAll(a);
+			XmlDecoder.readXML(currentFile, pane);
+
 		}
 	}
 
