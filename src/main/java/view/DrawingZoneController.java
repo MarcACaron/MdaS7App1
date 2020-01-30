@@ -68,7 +68,7 @@ public class DrawingZoneController {
 						this.mainApp.getTool().setTool(sh);
 						this.mainApp.paletteCouleurController.setLineWidth(sh.getStrokeWidth());
 						this.mainApp.paletteCouleurController.setStroke((Color) (sh.getStroke()));
-						this.mainApp.paletteCouleurController.setFill(sh.getAccessibleText()==null?"":sh.getAccessibleText());
+						
 						tool.fillDetails(this.mainApp.paletteDetailController, sh).apply(null);
 					}
 				});
@@ -80,6 +80,5 @@ public class DrawingZoneController {
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         this.mainApp.menuController.setPane(pane);
-        //this.scrollPane = scP;
     }
 }

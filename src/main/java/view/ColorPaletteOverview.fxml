@@ -16,15 +16,26 @@
 
 <HBox prefHeight="30.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PaletteCouleurController">
    <children>
-      <Label prefHeight="30.0" text="Remplissage" textAlignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <HBox.margin>
-            <Insets right="5.0" />
-         </HBox.margin>
-      </Label>
-      <ChoiceBox fx:id="fill" prefHeight="30.0" prefWidth="80.0" />
+      <Button fx:id="fillAnanas" mnemonicParsing="false" onAction="#ananas">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            	<image>
+            		<Image url="@../images/ananas.png" />
+            	</image>
+            </ImageView>  
+         </graphic></Button>
+      <Button fx:id="fillDirt" mnemonicParsing="false" onAction="#dirt">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            	<image>
+            		<Image url="@../images/dirt.png" />
+            	</image>
+            </ImageView>  
+         </graphic></Button>
+      <Button fx:id="fillRed" mnemonicParsing="false" onAction="#red">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
       <Label prefHeight="30.0" text="Line color:">
          <font>
             <Font size="15.0" />
@@ -45,18 +56,18 @@
       <ChoiceBox fx:id="lineWidth" prefHeight="30.0" prefWidth="40.0" />
       <Button mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="40.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" >
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
             	<image>
-            		<Image url="@../images/ZoomIn.png"></Image>
+            		<Image url="@../images/ZoomIn.png" />
             	</image>
             </ImageView>         
          </graphic>
       </Button>
       <Button mnemonicParsing="false" onAction="#zoomOut" prefHeight="30.0" prefWidth="40.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" >
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
             	<image>
-            		<Image url="@../images/ZoomOut.png"></Image>
+            		<Image url="@../images/ZoomOut.png" />
             	</image>
             </ImageView>
          </graphic>
