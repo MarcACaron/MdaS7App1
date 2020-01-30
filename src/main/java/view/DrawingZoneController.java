@@ -22,6 +22,16 @@ public class DrawingZoneController {
 	public DrawingZoneController() {
 	}
 	
+	public void zoomIn(double zoom) {
+        pane.setScaleX(pane.getScaleX() *zoom);
+        pane.setScaleY(pane.getScaleY() *zoom);
+    }
+	
+	public void zoomOut(double zoom) {
+        pane.setScaleX(pane.getScaleX() /zoom);
+        pane.setScaleY(pane.getScaleY() /zoom);
+    }
+
 	@FXML
     private void initialize() {
 		pane.setOnMousePressed((t) -> {

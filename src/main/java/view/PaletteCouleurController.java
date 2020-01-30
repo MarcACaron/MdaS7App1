@@ -32,6 +32,14 @@ public class PaletteCouleurController {
 	}
 	
 	@FXML
+	private void zoomIn() {
+		this.mainApp.drawingZoneController.zoomIn(1.1);
+	}
+	@FXML
+	private void zoomOut() {
+		this.mainApp.drawingZoneController.zoomOut(1.1);
+	}
+	@FXML
 	private void fillShape() {
 		if(fill.getValue()!="") {
 			if(fill.getValue()=="rouge") {
