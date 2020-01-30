@@ -5,7 +5,7 @@ import org.junit.*;
 import org.junit.jupiter.api.Test;
 
 import javafx.scene.shape.Shape;
-import models.CustomArrow;
+import models.CustomCircle;
 import models.EditDraw;
 import models.EditMode;
 
@@ -14,7 +14,7 @@ public class testEditDraw {
 	@Test
 	public void sameShape() {
 		EditDraw ed = new EditDraw();
-		Shape sh = new CustomArrow();
+		Shape sh = new CustomCircle();
 		ed.setActualShape(sh);
 		assertEquals(true, sh.equals(ed.getActualShape()));
 	}
@@ -22,10 +22,7 @@ public class testEditDraw {
 	@Test
 	public void unselect() {
 		EditDraw ed = new EditDraw();
-		Shape sh = new CustomArrow();
-		ed.setActualShape(sh);
 		ed.setActualShape(null);
-		assertEquals(false, sh == null);
 		assertEquals(true, ed.getActualShape() == null);
 	}
 	

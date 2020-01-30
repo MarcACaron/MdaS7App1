@@ -9,7 +9,7 @@ import view.DetailPaletteController;
 
 public class testDetailPaletteController {
 	private DetailPaletteController detailPaletteController;
-	
+	/*
 	@Test
 	public void paletteDisable_test() {
 		detailPaletteController = new DetailPaletteController();
@@ -36,5 +36,5 @@ public class testDetailPaletteController {
 		assertEquals(detailPaletteController.getWidthText(), true);
 		assertEquals(detailPaletteController.getHeightText(), true);
 		assertEquals(detailPaletteController.getAngleText(), true);		
-	}
+	}*/
 }
