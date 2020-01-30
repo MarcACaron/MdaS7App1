@@ -6,15 +6,19 @@ import ddraw4US.MainApp;
 import ddraw4US.SelectionTool;
 import ddraw4US.Tool;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Scale;
 
 public class DrawingZoneController {
 	
 	@FXML
 	private Pane pane;
-	
+	@FXML
+	private ScrollPane scrollPane;
 	private MainApp mainApp;
 	double orgX, orgY;
 	int childIndex;
@@ -23,13 +27,13 @@ public class DrawingZoneController {
 	}
 	
 	public void zoomIn(double zoom) {
-        pane.setScaleX(pane.getScaleX() *zoom);
-        pane.setScaleY(pane.getScaleY() *zoom);
+        Scale scaleTransform = new Scale(zoom, zoom, 0, 0);
+        pane.getTransforms().add(scaleTransform);
     }
 	
 	public void zoomOut(double zoom) {
-        pane.setScaleX(pane.getScaleX() /zoom);
-        pane.setScaleY(pane.getScaleY() /zoom);
+        Scale scaleTransform = new Scale(1/zoom, 1/zoom, 0, 0);
+        pane.getTransforms().add(scaleTransform);
     }
 
 	@FXML
@@ -76,5 +80,6 @@ public class DrawingZoneController {
 	public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         this.mainApp.menuController.setPane(pane);
+        //this.scrollPane = scP;
     }
 }
