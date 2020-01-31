@@ -10,6 +10,7 @@ import org.testfx.*;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
 
+import controller.DetailPaletteController;
 import ddraw4US.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -22,23 +23,22 @@ import javafx.stage.Stage;
 import org.testfx.api.FxAssert;
 
 
-import view.DetailPaletteController;
-
-
 public class TestMenuController extends testApplicationUI{
 
 	private MenuBar menuBar;
 	
+	final String[][] nameArray =
+		{		{"File", "New", "Open", "Open as", "Close", "Save", "Save as", "Revert", "Page Setup", "Print", "Quit"},
+				{"Edit", "Undo ctl z", "Cut", "Copy","Paste","Clear","Duplicate","Select All ctl","Round Corners","Reshape","Smooth","Unsmooth","Show Clipboard"},
+				{"Layout", "Turn Autogrid off","Show rules","Show gridlines","Show size","Show page breaks","Save as","Revert","Page Setup","Print","Quit"},
+				{"Pen","1 points","2 points","4 points","6 points","8 points","10 points","Plain line","Dashed line","Autosize line","Arrow at start","Arrow at end","Pens","Dashes","Arrows aa"}, 
+				{"Font","Times","Helvetica","Fonts","SetStyle aa"},
+				{"Size","9points","10points","12points","14points","18points","24points","36points","48points","Single space","Double space","Font sizes","Line spacing aa"}, 
+				{"Help", "New", "Open", "Open as", "Close", "Save", "Save as", "Revert", "Page Setup", "Print", "Quit"}};
+	
+	
 	@Test
 	public void test_MenuBar_Layout() {
-		final String[][] nameArray =
-			{		{"File", "New", "Open", "Open as", "Close", "Save", "Save as", "Revert", "Page Setup", "Print", "Quit"},
-					{"Edit", "Undo ctl z", "Cut", "Copy","Paste","Clear","Duplicate","Select All ctl","Round Corners","Reshape","Smooth","Unsmooth","Show Clipboard"},
-					{"Layout", "Turn Autogrid off","Show rules","Show gridlines","Show size","Show page breaks","Save as","Revert","Page Setup","Print","Quit"},
-					{"Pen","1 points","2 points","4 points","6 points","8 points","10 points","Plain line","Dashed line","Autosize line","Arrow at start","Arrow at end","Pens","Dashes","Arrows aa"}, 
-					{"Font","Times","Helvetica","Fonts","SetStyle aa"},
-					{"Size","9points","10points","12points","14points","18points","24points","36points","48points","Single space","Double space","Font sizes","Line spacing aa"}, 
-					{"Help", "New", "Open", "Open as", "Close", "Save", "Save as", "Revert", "Page Setup", "Print", "Quit"}};
 		
 		menuBar = find("#menuBar");
 		
@@ -54,4 +54,13 @@ public class TestMenuController extends testApplicationUI{
 			}
 		}
 	}
+	
+	@Test
+	public void test_MenuBar_Click() {
+		menuBar = find("#menuBar");
+		for (int i = 0; i < nameArray.length; i++) {;
+			clickOn(menuBar);
+		}
+	}
+	
 }

@@ -10,6 +10,7 @@ import org.testfx.*;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
 
+import controller.DetailPaletteController;
 import ddraw4US.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -21,11 +22,8 @@ import javafx.stage.Stage;
 
 import org.testfx.api.FxAssert;
 
-
-import view.DetailPaletteController;
-
 public class testApplicationUI extends ApplicationTest{
-	private MainApp mainApp;
+	protected MainApp mainApp;
 	
 	@Override
 	public void start(Stage stage) {

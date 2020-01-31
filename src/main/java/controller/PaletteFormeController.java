@@ -1,15 +1,15 @@
-package view;
+package controller;
 
-import ddraw4US.CircleTool;
-import ddraw4US.LineTool;
 import ddraw4US.MainApp;
-import ddraw4US.RectangleTool;
-import ddraw4US.SelectionTool;
 import ddraw4US.Tool;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import models.CircleTool;
+import models.LineTool;
+import models.RectangleTool;
+import models.SelectionTool;
 
 public class PaletteFormeController {
 	

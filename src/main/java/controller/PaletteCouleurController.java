@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import ddraw4US.MainApp;
 import ddraw4US.Tool;

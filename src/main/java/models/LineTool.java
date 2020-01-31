@@ -1,10 +1,10 @@
-package ddraw4US;
+package models;
 
 import java.util.function.Function;
 
+import controller.DetailPaletteController;
+import ddraw4US.Tool;
 import javafx.scene.shape.Shape;
-import models.CustomLine;
-import view.DetailPaletteController;
 
 public class LineTool extends Tool{
 

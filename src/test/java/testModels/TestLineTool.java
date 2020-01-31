@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
-import ddraw4US.LineTool;
-import models.CustomLine;;
+import models.CustomLine;
+import models.LineTool;;
 
 public class TestLineTool {
 	

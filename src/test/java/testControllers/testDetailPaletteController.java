@@ -10,6 +10,7 @@ import org.testfx.*;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.util.WaitForAsyncUtils;
 
+import controller.DetailPaletteController;
 import ddraw4US.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -20,9 +21,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import org.testfx.api.FxAssert;
-
-
-import view.DetailPaletteController;
 
 
 public class testDetailPaletteController extends testApplicationUI{
@@ -67,6 +65,44 @@ public class testDetailPaletteController extends testApplicationUI{
 			 for (int j = 0; j < nameArray[i].length; j++) {
 			 }
 		 }
+	}
+	
+	@Test
+	public void test_DetailPalette_Click() {
+		detailPalette = find("#detailPalette");
+		
+		detailPalette.setDisable(false);
+		clickOn((Node)find("#xPosText"));
+		clickOn((Node)find("#yPosText"));
+		clickOn((Node)find("#widthText"));
+		clickOn((Node)find("#heightText"));
+		clickOn((Node)find("#radiusText"));
+		clickOn((Node)find("#lengthText"));
+		clickOn((Node)find("#angleText"));
+		
+	}
+	
+	@Test
+	public void test_setget_Functions() {
+		detailPalette = find("#detailPalette");
+		
+		String testValue = "100";
+		
+		mainApp.paletteDetailController.setXPosText(testValue);
+		assertEquals(mainApp.paletteDetailController.getXPosText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setYPosText(testValue);
+		assertEquals(mainApp.paletteDetailController.getYPosText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setWidthText(testValue);
+		assertEquals(mainApp.paletteDetailController.getWidthText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setHeightText(testValue);
+		assertEquals(mainApp.paletteDetailController.getHeightText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setRadiusText(testValue);
+		assertEquals(mainApp.paletteDetailController.getRadiusText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setLengthText(testValue);
+		assertEquals(mainApp.paletteDetailController.getLengthText().compareTo(testValue),0);
+		mainApp.paletteDetailController.setAngleText(testValue);
+		assertEquals(mainApp.paletteDetailController.getAngleText().compareTo(testValue),0);
+
 	}
 	
 	/*@Test
